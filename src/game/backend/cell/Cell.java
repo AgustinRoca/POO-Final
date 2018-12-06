@@ -15,7 +15,8 @@ public class Cell {
 		this.grid = grid;
 		this.content = new Nothing();
 	}
-	
+
+	/** Inicializa las celdas de al lado de la celda*/
 	public void setAround(Cell up, Cell down, Cell left, Cell right) {
 		this.around[Direction.UP.ordinal()] = up;
 		this.around[Direction.DOWN.ordinal()] = down;
@@ -23,10 +24,12 @@ public class Cell {
 		this.around[Direction.RIGHT.ordinal()] = right;
 	}
 
+	/** Devuelve true si no estoy en lo mas abajo de la pantalla*/
 	public boolean hasFloor() {
 		return !around[Direction.DOWN.ordinal()].isEmpty();
 	}
-	
+
+	/** Devuelve true si se puede mover */
 	public boolean isMovable(){
 		return content.isMovable();
 	}
