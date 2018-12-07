@@ -13,7 +13,8 @@ public class FigureDetector {
 	public FigureDetector(Grid grid) {
 		this.grid = grid;
 	}
-	
+
+
 	public Figure checkFigure(int i, int j) {
 		int acum = readCheckpoints(i, j);
 		if (acum > 0) {
@@ -25,7 +26,8 @@ public class FigureDetector {
 		}
 		return null;
 	}
-	
+
+	/** Devuelve la cantidad de checkpoints que son equals al cell i,j */
 	private int readCheckpoints(int i, int j) {
 		Element curr = grid.get(i,j);
 		int acum = 0;
@@ -40,7 +42,8 @@ public class FigureDetector {
 		}
 		return acum;
 	}
-	
+
+	/** Borra la figura del grid y si es necesario, reemplaza por el que corresponda */
 	public void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)grid.get(i, j)).getColor();
 		grid.clearContent(i, j);

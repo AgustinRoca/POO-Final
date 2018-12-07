@@ -2,6 +2,7 @@ package game.backend;
 
 import game.backend.cell.Cell;
 import game.backend.element.Element;
+import java.lang.reflect.InvocationTargetException;
 
 public class CandyGame implements GameListener {
 	
@@ -15,8 +16,8 @@ public class CandyGame implements GameListener {
 	
 	public void initGame() {
 		try {
-			grid = (Grid)levelClass.newInstance();
-		} catch(IllegalAccessException | InstantiationException e) {
+			grid = (Grid)levelClass.getDeclaredConstructor().newInstance();
+		} catch(IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException e) {
 			System.out.println("ERROR AL INICIAR");
 		}
 		state = grid.createState();
