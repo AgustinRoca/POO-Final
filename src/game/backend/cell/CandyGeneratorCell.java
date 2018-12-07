@@ -5,6 +5,7 @@ import game.backend.element.Candy;
 import game.backend.element.CandyColor;
 import game.backend.element.Element;
 
+/** Es una celda que va arriba de toda la pantalla que va a ir generando los caramelos que caen */
 public class CandyGeneratorCell extends Cell {
 	
 	public CandyGeneratorCell(Grid grid) {
