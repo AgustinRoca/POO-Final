@@ -1,3 +1,4 @@
+
 package game.frontend;
 
 import game.backend.CandyGame;

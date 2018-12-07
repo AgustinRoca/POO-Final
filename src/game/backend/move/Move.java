@@ -19,6 +19,8 @@ public abstract class Move {
 		this.j2 = j2;
 	}
 	
+	
+	// Chequea que se pueda realizar el movimiento fijandose que solo se mueva de a un lugar
 	public boolean isValid() {
 		if ( (i1 == i2 && Math.abs(j1-j2) == 1) || (j1 == j2 && Math.abs(i1-i2) == 1)) {
 			return internalValidation();
@@ -30,6 +32,7 @@ public abstract class Move {
 		return true;
 	}
 	
+	// retorna un elemento del grid
 	protected Element get(int i, int j) {
 		return grid.get(i, j);
 	}

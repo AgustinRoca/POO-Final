@@ -12,6 +12,7 @@ import java.awt.Point;
 
 public enum Figure {
 	
+	// todas las posibles figuras
 	F6(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(0,1), new Point(0,2)}, 240, Bomb.class, false),
 	F15(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(1,0), new Point(2,0)}, 15, Bomb.class, false),	
 	F4(new Point[]{ new Point(0,-1), new Point(0,1), new Point(0,2)}, 112,  VerticalStripedCandy.class),
@@ -34,9 +35,13 @@ public enum Figure {
 	F12(new Point[]{ new Point(-2,0), new Point(-1,0)}, 3);
 	
 	
+	// La forma en la que explotan los caramelos
 	private Point[] points;
+	// No se que es
 	private int value;
+	// Si se transforma en otro caramelo
 	private Class<?> replacementClass;
+	// si se puede remplazar
 	private boolean isCandyRepl = true;
 
 	Figure(Point[] points, int value, Class<?> replacementClass) {
@@ -70,10 +75,12 @@ public enum Figure {
 		return replacementClass != null;
 	}
 	
+	// el & es como un && pero a nivel de bits
 	public boolean matches(int acum) {
 		return value == (value & acum);
 	}
 	
+	// hace tranforma un grupo de caramelos a otra cosa, una bomb a ponele
 	public Element generateReplacement(CandyColor color) {
 		try {
 			Element e;
