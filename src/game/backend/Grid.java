@@ -25,6 +25,8 @@ public abstract class Grid {
 	private FigureDetector figureDetector;
 	
 	protected abstract GameState newState();
+
+	/** Rellena todas las celdas del juego*/
 	protected abstract void fillCells();
 	
 	protected Cell[][] g() {
@@ -48,15 +50,19 @@ public abstract class Grid {
 		fallElements();
 	}	
 
+	/** Devuelve el contenido de la celda */
 	public Element get(int i, int j) {
 		return g[i][j].getContent();
 	}
-	
+
+	/** Devuelve la celda */
 	public Cell getCell(int i, int j) {
 		return g[i][j];
 	}
 
+	/** Usa el fallUpperContent de cada cell si la cell no esta vacia */
 	public void fallElements() {
+		//Porque empieza de arriba a la derecha tho? porque no empezar los dos con 0? o los dos con SIZE?
 		int i = SIZE - 1;
 		while (i >= 0) {
 			int j = 0;
@@ -73,7 +79,8 @@ public abstract class Grid {
 			i--;
 		}
 	}
-	
+
+
 	public void clearContent(int i, int j) {
 		g[i][j].clearContent();
 	}
@@ -81,7 +88,8 @@ public abstract class Grid {
 	public void setContent(int i, int j, Element e) {
 		g[i][j].setContent(e);
 	}
-	
+
+	/** Swapea los candies de (i1, j1) y (i2, j2), si no es valido vuelve como estaba */
 	public boolean tryMove(int i1, int j1, int i2, int j2) {
 		Move move = moveMaker.getMove(i1, j1, i2, j2);
 		swapContent(i1, j1, i2, j2);
@@ -94,7 +102,8 @@ public abstract class Grid {
 			return false;
 		}
 	}	
-	
+
+	//No entendi como funciona
 	public Figure tryRemove(Cell cell) {
 		if (gMap.containsKey(cell)) {
 			Point p = gMap.get(cell);
@@ -106,7 +115,9 @@ public abstract class Grid {
 		}
 		return null;
 	}
-	
+
+
+	//No entendi como funciona
 	private void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)get(i, j)).getColor();
 		if (f.hasReplacement()) {
@@ -119,6 +130,7 @@ public abstract class Grid {
 		}
 	}
 
+	//Swapea los lugares (i1, j1) con (i1, j2) y los muestra en pantalla
 	public void swapContent(int i1, int j1, int i2, int j2) {
 		Element e = g[i1][j1].getContent();
 		g[i1][j1].setContent(g[i2][j2].getContent());
@@ -134,7 +146,8 @@ public abstract class Grid {
 	public void addListener(GameListener listener) {
 		listeners.add(listener);
 	}
-	
+
+	/** Actualiza en pantalla el grid */
 	public void wasUpdated(){
 		if (listeners.size() > 0) {
 			for (GameListener gl: listeners) {
@@ -142,7 +155,8 @@ public abstract class Grid {
 			}
 		}
 	}
-	
+
+	//No entendi bien esto
 	public void cellExplosion(Element e) {
 		for (GameListener gl: listeners) {
 			gl.cellExplosion(e);

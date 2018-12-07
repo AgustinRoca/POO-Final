@@ -24,7 +24,7 @@ public class Cell {
 		this.around[Direction.RIGHT.ordinal()] = right;
 	}
 
-	/** Devuelve true si no estoy en lo mas abajo de la pantalla*/
+	/** Devuelve true si hay un candy o algo estable abajo */
 	public boolean hasFloor() {
 		return !around[Direction.DOWN.ordinal()].isEmpty();
 	}
@@ -33,7 +33,8 @@ public class Cell {
 	public boolean isMovable(){
 		return content.isMovable();
 	}
-	
+
+	/** Devuelve true si no hay nada solido en la celda */
 	public boolean isEmpty() {
 		return !content.isSolid();
 	}
@@ -41,7 +42,8 @@ public class Cell {
 	public Element getContent() {
 		return content;
 	}
-	
+
+	/** Explota el contenido de la celda (si hay paquete o rayado hace esa explosion tambien), rellena esos lugares con Nothing */
 	public void clearContent() {
 		if (content.isMovable()) {
 			Direction[] explosionCascade = content.explode();
@@ -53,19 +55,22 @@ public class Cell {
 			this.content = new Nothing();
 		}
 	}
-	
+
+	/** Por si hay paquete o rayado */
 	private void expandExplosion(Direction[] explosion) {
 		for(Direction d: explosion) {
 			this.around[d.ordinal()].explode(d);
 		}
 	}
-	
+
+	/** explota lo que tenga que explotar */
 	private void explode(Direction d) {
 		clearContent();
 		if (this.around[d.ordinal()] != null)
 			this.around[d.ordinal()].explode(d);
 	}
-	
+
+	/** Borra el contenido y devuelve lo que habia */
 	public Element getAndClearContent() {
 		if (content.isMovable()) {
 			Element ret = content;
@@ -75,6 +80,7 @@ public class Cell {
 		return null;
 	}
 
+	/** Hace que caigan los candies */
 	public boolean fallUpperContent() {
 		Cell up = around[Direction.UP.ordinal()];
 		if (this.isEmpty() && !up.isEmpty() && up.isMovable()) {
@@ -90,7 +96,7 @@ public class Cell {
 		} 
 		return false;
 	}
-	
+
 	public void setContent(Element content) {
 		this.content = content;
 	}
