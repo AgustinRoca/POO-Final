@@ -6,16 +6,16 @@ import javafx.scene.layout.BorderPane;
 
 public class LevelPanel extends BorderPane{
     private Label scoreLabel;
-    private Label levelLaber;
+    private Label levelLabel;
     private Label movesLabel;
     private long movesLeft;
 
     public LevelPanel(String level,long score, long movesLeft ) {
         setStyle("-fx-background-color: #ff5bdd");
-        levelLaber = new Label(level);
-        levelLaber.setAlignment(Pos.CENTER_LEFT);
-        levelLaber.setStyle("-fx-font-size: 18");
-        setTop(levelLaber);
+        levelLabel = new Label(level);
+        levelLabel.setAlignment(Pos.CENTER_LEFT);
+        levelLabel.setStyle("-fx-font-size: 18");
+        setTop(levelLabel);
         scoreLabel = new Label(String.format("Required Score: %d",score));
         scoreLabel.setAlignment(Pos.CENTER_LEFT);
         scoreLabel.setStyle("-fx-font-size: 18");
