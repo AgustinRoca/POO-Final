@@ -67,7 +67,7 @@ public abstract class Grid {
     }
 
     public int getCherriesGenerated() {
-        return cherriesGenerated;
+	    return cherriesGenerated;
     }
 
     public void incrementHazelnutsGenerated(){
@@ -150,8 +150,8 @@ public abstract class Grid {
 		} else {
 			clearContent(i, j);
 		}
-		for (Point p: f.getPoints()) {
-			clearContent(i + p.x, j + p.y);
+		for (Checkpoint c: f.getCheckpoints()) {
+			clearContent(i + c.getI(), j + c.getJ());
 		}
 	}
 

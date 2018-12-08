@@ -92,4 +92,8 @@ public class Level1 extends Grid {
 		return REQUIRED_SCORE;
 	}
 
+	@Override
+	public int getMaxCherries() {
+		return 2;
+	}
 }

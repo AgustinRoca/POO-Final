@@ -13,32 +13,30 @@ import java.awt.Point;
 public enum Figure {
 	
 	// todas las posibles figuras
-	// Podriamos simplificar todo esto con el enum de Checkpoints (casi seguro)
-	// Ejemplo: F6(new Checkpoint[](LL, L, R, RR), Bomb.class, false)
-	F6(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(0,1), new Point(0,2)}, 240, Bomb.class, false),
-	F15(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(1,0), new Point(2,0)}, 15, Bomb.class, false),	
-	F4(new Point[]{ new Point(0,-1), new Point(0,1), new Point(0,2)}, 112,  VerticalStripedCandy.class),
-	F5(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(0,1)}, 208, VerticalStripedCandy.class),
-	F13(new Point[]{ new Point(-1,0), new Point(1,0), new Point(2,0)}, 13,  HorizontalStripedCandy.class),	
-	F14(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(1,0)}, 7, HorizontalStripedCandy.class),
-	F7(new Point[]{ new Point(0,1), new Point(0,2), new Point(1,0), new Point(2,0)}, 60, WrappedCandy.class),
-	F8(new Point[]{ new Point(0,-1), new Point(0,1), new Point(1,0), new Point(2,0)}, 92, WrappedCandy.class),
-	F9(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(1,0), new Point(2,0)}, 204, WrappedCandy.class),
-	F16(new Point[]{ new Point(-1,0), new Point(1,0), new Point(0,1), new Point(0,2)}, 53, WrappedCandy.class),
-	F17(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(0,1), new Point(0,2)}, 51, WrappedCandy.class),
-	F18(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(0,-1), new Point(0,-2)}, 195, WrappedCandy.class),
-	F19(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(0,-1), new Point(0,1)}, 83, WrappedCandy.class),
-	F20(new Point[]{ new Point(-1,0), new Point(1,0), new Point(0,-2), new Point(0,-1)}, 197, WrappedCandy.class),
-	F1(new Point[]{new Point(0,1), new Point(0,2)}, 48),
-	F2(new Point[]{new Point(0,-1), new Point(0,1)}, 80),
-	F3(new Point[]{new Point(0,-1), new Point(0,-2)}, 192),
-	F10(new Point[]{ new Point(1,0), new Point(2,0)}, 12),	
-	F11(new Point[]{ new Point(-1,0), new Point(1,0)}, 5),	
-	F12(new Point[]{ new Point(-2,0), new Point(-1,0)}, 3);
+	F6(new Checkpoint[]{ Checkpoint.LL, Checkpoint.L, Checkpoint.R, Checkpoint.RR}, Bomb.class, false),
+	F15(new Checkpoint[]{ Checkpoint.UU, Checkpoint.U, Checkpoint.D, Checkpoint.DD}, Bomb.class, false),
+    F7(new Checkpoint[]{ Checkpoint.R, Checkpoint.RR, Checkpoint.D, Checkpoint.DD}, WrappedCandy.class),
+    F8(new Checkpoint[]{ Checkpoint.L, Checkpoint.R, Checkpoint.D, Checkpoint.DD}, WrappedCandy.class),
+    F9(new Checkpoint[]{ Checkpoint.LL, Checkpoint.L, Checkpoint.D, Checkpoint.DD}, WrappedCandy.class),
+    F16(new Checkpoint[]{ Checkpoint.U, Checkpoint.D, Checkpoint.R, Checkpoint.RR}, WrappedCandy.class),
+    F17(new Checkpoint[]{ Checkpoint.UU, Checkpoint.U, Checkpoint.R, Checkpoint.RR}, WrappedCandy.class),
+    F18(new Checkpoint[]{ Checkpoint.UU, Checkpoint.U, Checkpoint.L, Checkpoint.LL}, WrappedCandy.class),
+    F19(new Checkpoint[]{ Checkpoint.UU, Checkpoint.U, Checkpoint.L, Checkpoint.R}, WrappedCandy.class),
+    F20(new Checkpoint[]{ Checkpoint.U, Checkpoint.D, Checkpoint.LL, Checkpoint.L}, WrappedCandy.class),
+	F4(new Checkpoint[]{ Checkpoint.L, Checkpoint.R, Checkpoint.RR}, VerticalStripedCandy.class),
+	F5(new Checkpoint[]{ Checkpoint.LL, Checkpoint.L, Checkpoint.R}, VerticalStripedCandy.class),
+	F13(new Checkpoint[]{ Checkpoint.U, Checkpoint.D, Checkpoint.DD}, HorizontalStripedCandy.class),
+	F14(new Checkpoint[]{ Checkpoint.UU, Checkpoint.U, Checkpoint.D}, HorizontalStripedCandy.class),
+	F1(new Checkpoint[]{Checkpoint.R, Checkpoint.RR}),
+	F2(new Checkpoint[]{Checkpoint.L, Checkpoint.R}),
+	F3(new Checkpoint[]{Checkpoint.L, Checkpoint.LL}),
+	F10(new Checkpoint[]{ Checkpoint.D, Checkpoint.DD}),
+	F11(new Checkpoint[]{ Checkpoint.U, Checkpoint.D}),
+	F12(new Checkpoint[]{ Checkpoint.UU, Checkpoint.U});
 	
 	
 	// La forma en la que explotan los caramelos
-	private Point[] points;
+	private Checkpoint[] checkpoints;
 	// No se que es
 	private int value;
 	// Si se transforma en otro caramelo
@@ -46,31 +44,38 @@ public enum Figure {
 	// si se puede remplazar
 	private boolean isCandyRepl = true;
 
-	Figure(Point[] points, int value, Class<?> replacementClass) {
-		this.points = points;
-		this.value = value;
+	Figure(Checkpoint[] checkpoints, Class<?> replacementClass) {
+		this.checkpoints = checkpoints;
 		this.replacementClass = replacementClass;
+        this.value = 0;
+        for(Checkpoint c: checkpoints){
+            this.value += c.getValue();
+        }
 	}
 	
-	Figure(Point[] points, int value, Class<?> replacementClass, boolean isCandyRepl) {
-		this.points = points;
-		this.value = value;
-		this.replacementClass = replacementClass;
+	Figure(Checkpoint[] checkpoints, Class<?> replacementClass, boolean isCandyRepl) {
+		this.checkpoints = checkpoints;
+        this.value = 0;
+        for(Checkpoint c: checkpoints){
+            this.value += c.getValue();
+        }		this.replacementClass = replacementClass;
 		this.isCandyRepl = isCandyRepl;
 	}
 	
-	Figure(Point[] points, int value) {
-		this.points = points;
-		this.value = value;
-		this.replacementClass = null;
+	Figure(Checkpoint[] checkpoints) {
+		this.checkpoints = checkpoints;
+        this.value = 0;
+        for(Checkpoint c: checkpoints){
+            this.value += c.getValue();
+        }		this.replacementClass = null;
 	}
 	
-	public Point[] getPoints() {
-		return points;
+	public Checkpoint[] getCheckpoints() {
+		return checkpoints;
 	}
 	
 	public int size() {
-		return points.length;
+		return checkpoints.length;
 	}
 
 	public boolean hasReplacement() {

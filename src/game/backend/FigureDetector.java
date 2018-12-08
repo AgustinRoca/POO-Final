@@ -4,7 +4,6 @@ import game.backend.element.Candy;
 import game.backend.element.CandyColor;
 import game.backend.element.Element;
 
-import java.awt.Point;
 
 public class FigureDetector {
 
@@ -50,8 +49,8 @@ public class FigureDetector {
 		if (f.hasReplacement()) {
 			grid.setContent(i, j, f.generateReplacement(color));
 		}
-		for (Point p: f.getPoints()) {
-			grid.clearContent(i + p.x, j + p.y);
+		for (Checkpoint c: f.getCheckpoints()) {
+			grid.clearContent(i + c.getI(), j + c.getJ());
 		}
 	}
 
