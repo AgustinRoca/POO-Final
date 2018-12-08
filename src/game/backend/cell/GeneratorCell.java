@@ -22,7 +22,7 @@ public class GeneratorCell extends Cell {
 
 	@Override
 	public Element getContent() {
-		if(Math.random() > 0.8){
+		if(Math.random() > 0.95){
 			if(getGrid().getCherriesGenerated() < getGrid().getMaxCherries() && Math.random() > 0.5){
 				getGrid().incrementCherriesGenerated();
 			    return new Cherry();

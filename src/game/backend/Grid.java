@@ -1,9 +1,7 @@
 package game.backend;
 
 import game.backend.cell.Cell;
-import game.backend.element.Candy;
-import game.backend.element.CandyColor;
-import game.backend.element.Element;
+import game.backend.element.*;
 import game.backend.move.Move;
 import game.backend.move.MoveMaker;
 
@@ -25,8 +23,10 @@ public abstract class Grid {
 	private FigureDetector figureDetector;
 	private int hazelnutsGenerated = 0;
 	private int cherriesGenerated = 0;
-	
-	protected abstract GameState newState();
+	private int cherriesExploded = 0;
+	private int hazelnutsExploded = 0;
+
+    protected abstract GameState newState();
 
 	/** Rellena todas las celdas del juego*/
 	protected abstract void fillCells();
@@ -79,7 +79,7 @@ public abstract class Grid {
     }
 
     public int getMaxCherries(){
-	    return 10;
+	    return 4;
     }
 
     public int getMaxHazelnuts(){
@@ -129,18 +129,26 @@ public abstract class Grid {
 	}	
 
 	/** Si con la celda forman una figura entonces remueve la figura */
-	public Figure tryRemove(Cell cell) {
+	public void tryRemove(Cell cell) {
 		if (gMap.containsKey(cell)) {
 			Point p = gMap.get(cell);
-			Figure f = figureDetector.checkFigure(p.x, p.y);
+			String contentKey = cell.getContent().getKey();
+			if ( contentKey.equals(new Cherry().getKey()) && p.x == SIZE - 1){
+                cherriesExploded++;
+                clearContent(p.x,p.y);
+			}
+            if ( contentKey.equals(new Hazelnut().getKey()) && p.x == SIZE -1 ){
+                hazelnutsExploded++;
+                clearContent(p.x,p.y);
+            }
+
+
+            Figure f = figureDetector.checkFigure(p.x, p.y);
 			if (f != null) {
 				removeFigure(p.x, p.y, f);
 			}
-			return f;
 		}
-		return null;
 	}
-
 
 	/** Remueve los caramelos que forman la figura mostrada */
 	private void removeFigure(int i, int j, Figure f) {
