@@ -7,13 +7,14 @@ import game.backend.element.Element;
 import java.awt.Point;
 
 public class FigureDetector {
-	
+
 	private Grid grid;
-	
+
 	public FigureDetector(Grid grid) {
 		this.grid = grid;
 	}
-	
+
+
 	public Figure checkFigure(int i, int j) {
 		int acum = readCheckpoints(i, j);
 		if (acum > 0) {
@@ -25,8 +26,8 @@ public class FigureDetector {
 		}
 		return null;
 	}
-	
-	// si entendiera que es value sabria que hace esta funcion
+
+	/** Devuelve la cantidad de checkpoints que son equals al cell i,j */
 	private int readCheckpoints(int i, int j) {
 		Element curr = grid.get(i,j);
 		int acum = 0;
@@ -41,8 +42,8 @@ public class FigureDetector {
 		}
 		return acum;
 	}
-	
-	// borra una figura y si tiene remplazo la cambia por ese remplazo, usa el generateReplacement de Figure
+
+	/** Borra la figura del grid y si es necesario, reemplaza por el que corresponda */
 	public void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)grid.get(i, j)).getColor();
 		grid.clearContent(i, j);
@@ -53,5 +54,5 @@ public class FigureDetector {
 			grid.clearContent(i + p.x, j + p.y);
 		}
 	}
-	
+
 }

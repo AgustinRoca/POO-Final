@@ -1,7 +1,7 @@
 package game.backend;
 
 public enum Checkpoint {
-
+	//pensar si no conviene cambiar el value con un 2^ordinal()
 	U(-1,0, 1), // arriba
 	UU(-2,0, 2), // arriba x2
 	D(1,0, 4), // abajo

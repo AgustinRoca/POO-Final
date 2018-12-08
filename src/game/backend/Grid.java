@@ -130,7 +130,8 @@ public abstract class Grid {
 		}
 	}
 
-	//Swapea los lugares (i1, j1) con (i1, j2) y los muestra en pantalla
+	/** Swapea los lugares (i1, j1) con (i1, j2) y los muestra en pantalla*/
+
 	public void swapContent(int i1, int j1, int i2, int j2) {
 		Element e = g[i1][j1].getContent();
 		g[i1][j1].setContent(g[i2][j2].getContent());
