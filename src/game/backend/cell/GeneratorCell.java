@@ -4,9 +4,9 @@ import game.backend.Grid;
 import game.backend.element.*;
 
 /** Es una celda que va arriba de toda la pantalla que va a ir generando los caramelos que caen */
-public class CandyGeneratorCell extends Cell {
+public class GeneratorCell extends Cell {
 	
-	public CandyGeneratorCell(Grid grid) {
+	public GeneratorCell(Grid grid) {
 		super(grid);
 	}
 	
