@@ -2,6 +2,7 @@ package game.backend.cell;
 
 import game.backend.Grid;
 import game.backend.element.Element;
+import game.backend.element.Fruit;
 import game.backend.element.Nothing;
 import game.backend.move.Direction;
 
@@ -45,7 +46,7 @@ public class Cell {
 
 	/** Explota el contenido de la celda (si hay paquete o rayado hace esa explosion tambien), rellena esos lugares con Nothing */
 	public void clearContent() {
-		if (content.isMovable()) {
+		if (content.isMovable() && !(content instanceof Fruit)) {
 			Direction[] explosionCascade = content.explode();
 			grid.cellExplosion(content);
 			this.content = new Nothing();
