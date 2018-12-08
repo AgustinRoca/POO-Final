@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class Grid {
-	
+
 	public static final int SIZE = 9;
 
 	private Cell[][] g = new Cell[SIZE][SIZE];
