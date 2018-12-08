@@ -7,9 +7,9 @@ import game.backend.element.Element;
 import java.awt.Point;
 
 public class FigureDetector {
-	
+
 	private Grid grid;
-	
+
 	public FigureDetector(Grid grid) {
 		this.grid = grid;
 	}
@@ -54,5 +54,5 @@ public class FigureDetector {
 			grid.clearContent(i + p.x, j + p.y);
 		}
 	}
-	
+
 }
