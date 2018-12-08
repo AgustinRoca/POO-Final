@@ -2,7 +2,7 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.Grid;
-import game.backend.cell.GeneratorCell;
+import game.backend.cell.GeneralGeneratorCell;
 import game.backend.cell.Cell;
 import game.backend.element.Wall;
 
@@ -24,7 +24,7 @@ public class Level1 extends Grid {
 		
 		wallCell = new Cell(this);
 		wallCell.setContent(new Wall());
-		candyGenCell = new GeneratorCell(this);
+		candyGenCell = new GeneralGeneratorCell(this);
 		
 		//corners
 		g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);

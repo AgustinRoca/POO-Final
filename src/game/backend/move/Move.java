@@ -2,6 +2,7 @@ package game.backend.move;
 
 import game.backend.Grid;
 import game.backend.element.Element;
+import game.backend.element.Fruit;
 
 public abstract class Move {
 	
@@ -36,9 +37,12 @@ public abstract class Move {
 	protected Element get(int i, int j) {
 		return grid.get(i, j);
 	}
-	
+
 	protected void clearContent(int i, int j) {
-		grid.clearContent(i, j);
+
+		if (grid.getCell(i,j).getContent() instanceof Fruit && j == (Grid.SIZE - 1)){
+			grid.clearContent(i, j);
+		}
 	}
 	
 	protected void setContent(int i, int j, Element e){

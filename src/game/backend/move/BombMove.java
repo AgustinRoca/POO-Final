@@ -5,9 +5,10 @@ import game.backend.element.Bomb;
 import game.backend.element.Candy;
 
 public class BombMove extends Move {
-	
+	private Grid grid;
 	public BombMove(Grid grid) {
 		super(grid);
+		this.grid = grid;
 	}
 
 	@Override

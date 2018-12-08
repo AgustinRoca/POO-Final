@@ -131,13 +131,13 @@ public abstract class Grid {
 	/** Si con la celda forman una figura entonces remueve la figura */
 	public void tryRemove(Cell cell) {
 		if (gMap.containsKey(cell)) {
-			Point p = gMap.get(cell);
-			String contentKey = cell.getContent().getKey();
-			if ( contentKey.equals(new Cherry().getKey()) && p.x == SIZE - 1){
+            Point p = gMap.get(cell);
+			Element content = cell.getContent();
+			if ( content instanceof Cherry && p.x == SIZE - 1){
                 cherriesExploded++;
                 clearContent(p.x,p.y);
 			}
-            if ( contentKey.equals(new Hazelnut().getKey()) && p.x == SIZE -1 ){
+            if ( content instanceof Hazelnut && p.x == SIZE -1 ){
                 hazelnutsExploded++;
                 clearContent(p.x,p.y);
             }

@@ -3,6 +3,7 @@ package game.backend.move;
 import game.backend.Figure;
 import game.backend.FigureDetector;
 import game.backend.Grid;
+import game.backend.element.Fruit;
 
 public class CandyMove extends Move {
 
@@ -33,6 +34,10 @@ public class CandyMove extends Move {
 		if (f2 != null) {
 			detector.removeFigure(i2, j2, f2);
 		}
+
+		if (grid.getCell(i1,j1).getContent() instanceof Fruit && j1 == (Grid.SIZE - 1)) clearContent(i1,j1);
+		if (grid.getCell(i2,j2).getContent() instanceof Fruit && j2 == (Grid.SIZE - 1)) clearContent(i2,j2);
+
 	}
 
 }
