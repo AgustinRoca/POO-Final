@@ -10,7 +10,7 @@ public class MoveMaker {
 
 	private Map<String, Move> map;
 	private Grid grid;
-	
+
 	public MoveMaker(Grid grid) {
 		this.grid = grid;
 		initMap();
@@ -26,7 +26,7 @@ public class MoveMaker {
 		map.put(new Candy().getKey() + new Bomb().getKey(), new BombMove(grid));
 		map.put(new Candy().getKey() + new Cherry().getKey(), new CandyMove(grid));
 		map.put(new Candy().getKey() + new Hazelnut().getKey(), new CandyMove(grid));
-	
+
 		map.put(new HorizontalStripedCandy().getKey() + new Candy().getKey(), new CandyMove(grid));
 		map.put(new HorizontalStripedCandy().getKey() + new HorizontalStripedCandy().getKey(), new TwoStripedMove(grid));
 		map.put(new HorizontalStripedCandy().getKey() + new VerticalStripedCandy().getKey(), new TwoStripedMove(grid));
@@ -76,7 +76,7 @@ public class MoveMaker {
 		map.put(new Hazelnut().getKey() + new Cherry().getKey(), new FruitMove(grid));
 		map.put(new Hazelnut().getKey() + new Hazelnut().getKey(), new FruitMove(grid));
 	}
-	
+
 	// devuelve un movimiento
 	public Move getMove(int i1, int j1, int i2, int j2) {
 		Move move = map.get(grid.get(i1, j1).getKey() + grid.get(i2, j2).getKey());
