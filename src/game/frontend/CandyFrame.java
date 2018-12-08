@@ -5,7 +5,6 @@ import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
@@ -22,17 +21,20 @@ public class CandyFrame extends VBox {
 	private ScorePanel scorePanel;
 	private ImageManager images;
 	private Point2D lastPoint;
+	private LevelPanel levelPanel;
 	private CandyGame game;
 
 	public CandyFrame(CandyGame game) {
 		this.game = game;
+		game.initGame();
 		getChildren().add(new AppMenu());
+		levelPanel = new LevelPanel(game.getLevelName(), game.getRequiredScore(), game.getMaxMoves());
+		getChildren().add(levelPanel);
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
 		scorePanel = new ScorePanel();
 		getChildren().add(scorePanel);
-		game.initGame();
 		GameListener listener;
 		game.addGameListener(listener = new GameListener() {
 			@Override
@@ -59,18 +61,18 @@ public class CandyFrame extends VBox {
 				//
 			}
 		});
-
 		listener.gridUpdated();
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-			if (lastPoint == null) {
-				lastPoint = translateCoords(event.getX(), event.getY());
+			if (lastPoint == null || lastPoint.getY() < 0) {
+				lastPoint = translateCoords((event.getX()), event.getY()-levelPanel.getHeight());
 				System.out.println("Get first = " +  lastPoint);
 			} else {
-				Point2D newPoint = translateCoords(event.getX(), event.getY());
-				if (newPoint != null) {
+				Point2D newPoint = translateCoords(event.getX(), event.getY()-levelPanel.getHeight());
+				if (newPoint != null && newPoint.getY() > 0) {
 					System.out.println("Get second = " +  newPoint);
-					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
+					if (game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY()))
+						levelPanel.updateMoves();
 					String message = ((Long)game().getScore()).toString();
 					if (game().isFinished()) {
 						if (game().playerWon()) {

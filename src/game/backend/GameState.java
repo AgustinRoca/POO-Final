@@ -17,7 +17,7 @@ public abstract class GameState {
 		moves++;
 	}
 	
-	public int getMoves() {
+	protected int getMoves() {
 		return moves;
 	}
 	

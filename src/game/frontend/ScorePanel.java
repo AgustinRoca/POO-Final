@@ -20,4 +20,5 @@ public class ScorePanel extends BorderPane {
 		scoreLabel.setText(text);
 	}
 
+
 }
