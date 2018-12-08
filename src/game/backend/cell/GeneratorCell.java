@@ -24,10 +24,11 @@ public class GeneratorCell extends Cell {
 	public Element getContent() {
 		if(Math.random() > 0.8){
 			if(getGrid().getCherriesGenerated() < getGrid().getMaxCherries() && Math.random() > 0.5){
-
-				return new Cherry();
+				getGrid().incrementCherriesGenerated();
+			    return new Cherry();
 			}
 			else if(getGrid().getHazelnutsGenerated() < getGrid().getMaxHazelnuts()){
+			    getGrid().incrementHazelnutsGenerated();
 				return new Hazelnut();
 			}
 			else {

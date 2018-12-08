@@ -70,6 +70,14 @@ public abstract class Grid {
         return cherriesGenerated;
     }
 
+    public void incrementHazelnutsGenerated(){
+	    hazelnutsGenerated++;
+    }
+
+    public void incrementCherriesGenerated(){
+	    cherriesGenerated++;
+    }
+
     public int getMaxCherries(){
 	    return 0;
     }
