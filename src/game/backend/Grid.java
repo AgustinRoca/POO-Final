@@ -79,7 +79,7 @@ public abstract class Grid {
     }
 
     public int getMaxCherries(){
-	    return 0;
+	    return 10;
     }
 
     public int getMaxHazelnuts(){
