@@ -89,7 +89,7 @@ public enum Figure {
 			e = (Element) replacementClass.getDeclaredConstructor().newInstance();
 			if (isCandyRepl) {
 				((Candy)e).setColor(color);
-			} 
+			}
 			return e;
 		} catch(Exception e) {
 		}

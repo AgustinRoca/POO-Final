@@ -61,7 +61,7 @@ public abstract class Grid {
 	}
 
 	/** Usa el fallUpperContent de cada cell si la cell no esta vacia */
-	public void fallElements() {
+    private void fallElements() {
 		//Porque empieza de arriba a la derecha tho? porque no empezar los dos con 0? o los dos con SIZE?
 		int i = SIZE - 1;
 		while (i >= 0) {
@@ -70,7 +70,6 @@ public abstract class Grid {
 				if (g[i][j].isEmpty()) {
 					if (g[i][j].fallUpperContent()) {
 						i = SIZE;
-						j = -1;
 						break;
 					} 
 				}
@@ -132,7 +131,7 @@ public abstract class Grid {
 
 	/** Swapea los lugares (i1, j1) con (i1, j2) y los muestra en pantalla*/
 
-	public void swapContent(int i1, int j1, int i2, int j2) {
+	private void swapContent(int i1, int j1, int i2, int j2) {
 		Element e = g[i1][j1].getContent();
 		g[i1][j1].setContent(g[i2][j2].getContent());
 		g[i2][j2].setContent(e);
@@ -163,5 +162,8 @@ public abstract class Grid {
 			gl.cellExplosion(e);
 		}
 	}
-
+	public abstract String getLevelName();
+	public abstract long getMaxMoves();
+	public abstract long getRequiredScore();
 }
+

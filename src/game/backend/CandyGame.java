@@ -24,7 +24,7 @@ public class CandyGame implements GameListener {
 		grid.initialize();
 		addGameListener(this);
 	}
-	
+
 	public int getSize() {
 		return Grid.SIZE;
 	}
@@ -52,7 +52,18 @@ public class CandyGame implements GameListener {
 	public boolean playerWon() {
 		return state.playerWon();
 	}
-	
+
+	public String getLevelName(){
+		return grid.getLevelName();
+	}
+
+	public long getMaxMoves(){
+		return grid.getMaxMoves();
+	}
+
+	public long getRequiredScore(){
+		return grid.getRequiredScore();
+	}
 	@Override
 	public void cellExplosion(Element e) {
 		state.addScore(e.getScore());

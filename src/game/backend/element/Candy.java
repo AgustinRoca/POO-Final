@@ -36,9 +36,7 @@ public class Candy extends Element {
 		if (!(obj instanceof Candy))
 			return false;
 		Candy other = (Candy) obj;
-		if (color != other.color)
-			return false;
-		return true;
+		return color == other.color;
 	}
 	
 	@Override

@@ -25,7 +25,7 @@ public class Cell {
 	}
 
 	/** Devuelve true si hay un candy o algo estable abajo */
-	public boolean hasFloor() {
+	private boolean hasFloor() {
 		return !around[Direction.DOWN.ordinal()].isEmpty();
 	}
 
