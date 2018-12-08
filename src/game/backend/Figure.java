@@ -13,7 +13,7 @@ import java.awt.Point;
 public enum Figure {
 	
 	// todas las posibles figuras
-	// Podriamos simplificar t.odo esto con el enum de Checkpoints (casi seguro)
+	// Podriamos simplificar todo esto con el enum de Checkpoints (casi seguro)
 	// Ejemplo: F6(new Checkpoint[](LL, L, R, RR), Bomb.class, false)
 	F6(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(0,1), new Point(0,2)}, 240, Bomb.class, false),
 	F15(new Point[]{ new Point(-2,0), new Point(-1,0), new Point(1,0), new Point(2,0)}, 15, Bomb.class, false),	
