@@ -26,6 +26,7 @@ public class FigureDetector {
 		return null;
 	}
 	
+	// si entendiera que es value sabria que hace esta funcion
 	private int readCheckpoints(int i, int j) {
 		Element curr = grid.get(i,j);
 		int acum = 0;
@@ -41,6 +42,7 @@ public class FigureDetector {
 		return acum;
 	}
 	
+	// borra una figura y si tiene remplazo la cambia por ese remplazo, usa el generateReplacement de Figure
 	public void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)grid.get(i, j)).getColor();
 		grid.clearContent(i, j);
