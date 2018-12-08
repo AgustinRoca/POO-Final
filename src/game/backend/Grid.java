@@ -102,7 +102,7 @@ public abstract class Grid {
 		}
 	}	
 
-	//No entendi como funciona
+	/** Si con la celda forman una figura entonces remueve la figura */
 	public Figure tryRemove(Cell cell) {
 		if (gMap.containsKey(cell)) {
 			Point p = gMap.get(cell);
@@ -116,9 +116,9 @@ public abstract class Grid {
 	}
 
 
-	//No entendi como funciona
+	/** Remueve los caramelos que forman la figura mostrada */
 	private void removeFigure(int i, int j, Figure f) {
-		CandyColor color = ((Candy)get(i, j)).getColor();
+		CandyColor color = ((Candy)get(i, j)).getColor(); //esto es porque no puede pasar que no haya movido un candy
 		if (f.hasReplacement()) {
 			setContent(i, j, f.generateReplacement(color));
 		} else {
@@ -156,7 +156,7 @@ public abstract class Grid {
 		}
 	}
 
-	//No entendi bien esto
+	/**  */
 	public void cellExplosion(Element e) {
 		for (GameListener gl: listeners) {
 			gl.cellExplosion(e);

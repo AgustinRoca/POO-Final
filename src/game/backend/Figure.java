@@ -91,7 +91,7 @@ public enum Figure {
 				((Candy)e).setColor(color);
 			}
 			return e;
-		} catch(Exception e) {
+		} catch(Exception ignored) {
 		}
 		return null;
 	}	

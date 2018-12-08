@@ -14,7 +14,7 @@ public class FigureDetector {
 		this.grid = grid;
 	}
 
-
+	/** se fija si se formo una forma a partir del punto (i,j) */
 	public Figure checkFigure(int i, int j) {
 		int acum = readCheckpoints(i, j);
 		if (acum > 0) {
