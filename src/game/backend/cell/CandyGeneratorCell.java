@@ -1,9 +1,7 @@
 package game.backend.cell;
 
 import game.backend.Grid;
-import game.backend.element.Candy;
-import game.backend.element.CandyColor;
-import game.backend.element.Element;
+import game.backend.element.*;
 
 /** Es una celda que va arriba de toda la pantalla que va a ir generando los caramelos que caen */
 public class CandyGeneratorCell extends Cell {
@@ -24,8 +22,23 @@ public class CandyGeneratorCell extends Cell {
 
 	@Override
 	public Element getContent() {
-		int i = (int)(Math.random() * CandyColor.values().length);
-		return new Candy(CandyColor.values()[i]);
+		if(Math.random() > 0.8){
+			if(getGrid().getCherriesGenerated() < getGrid().getMaxCherries() && Math.random() > 0.5){
+
+				return new Cherry();
+			}
+			else if(getGrid().getHazelnutsGenerated() < getGrid().getMaxHazelnuts()){
+				return new Hazelnut();
+			}
+			else {
+				int i = (int) (Math.random() * CandyColor.values().length);
+				return new Candy(CandyColor.values()[i]);
+			}
+		}
+		else {
+			int i = (int) (Math.random() * CandyColor.values().length);
+			return new Candy(CandyColor.values()[i]);
+		}
 	}
 	
 	@Override
