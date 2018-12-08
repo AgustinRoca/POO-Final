@@ -23,6 +23,8 @@ public abstract class Grid {
 	private List<GameListener> listeners = new ArrayList<>();
 	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
+	private int hazelnutsGenerated = 0;
+	private int cherriesGenerated = 0;
 	
 	protected abstract GameState newState();
 
@@ -60,7 +62,23 @@ public abstract class Grid {
 		return g[i][j];
 	}
 
-	/** Usa el fallUpperContent de cada cell si la cell no esta vacia */
+    public int getHazelnutsGenerated() {
+        return hazelnutsGenerated;
+    }
+
+    public int getCherriesGenerated() {
+        return cherriesGenerated;
+    }
+
+    public int getMaxCherries(){
+	    return 0;
+    }
+
+    public int getMaxHazelnuts(){
+	    return 0;
+    }
+
+    /** Usa el fallUpperContent de cada cell si la cell no esta vacia */
     private void fallElements() {
 		//Porque empieza de arriba a la derecha tho? porque no empezar los dos con 0? o los dos con SIZE?
 		int i = SIZE - 1;
