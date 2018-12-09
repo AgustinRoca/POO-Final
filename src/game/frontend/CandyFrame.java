@@ -5,16 +5,20 @@ import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
+import game.backend.level.Level1;
+import game.backend.level.Level2;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
-import javafx.scene.Group;
-import javafx.scene.effect.BlendMode;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
+
+import java.util.Optional;
 
 public class CandyFrame extends VBox {
 
@@ -89,13 +93,34 @@ public class CandyFrame extends VBox {
 					if (game().isFinished()) {
 						if (game().playerWon()) {
 							message = message + " Finished - Player Won!";
+							Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+							alert.setTitle("Nivel ganado");
+							alert.setHeaderText("You Won!");
+							alert.setContentText("¿Quiere ir al siguiente nivel?");
+							Optional<ButtonType> result = alert.showAndWait();
+							if(result.isPresent()) {
+								if (result.get() == ButtonType.OK) {
+									//insert level change here
+								}
+								else
+									Platform.exit();
+							}
 						} else {
 							message = message + " Finished - Loser !";
+							Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+							alert.setTitle("Nivel Perdido");
+							alert.setHeaderText("You Lost!");
+							alert.setContentText("¿Quiere reintentar el nivel?");
+							Optional<ButtonType> result = alert.showAndWait();
+							if(result.isPresent()) {
+								if (result.get() == ButtonType.OK) {
+									//insert this level again here
+								}
+								else
+									Platform.exit();
+							}
+
 						}
-						// Aca podriamos meter alerta que sea tipo:
-						// ganaste! queres ir al next level o queres salir?
-						// perdiste! reintentar? si o no
-						// y con eso solcionariamos lo de que no siga jugando despues
 					}
 					scorePanel.updateScore(message);
 					lastPoint = null;

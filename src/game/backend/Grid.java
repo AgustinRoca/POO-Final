@@ -2,6 +2,7 @@ package game.backend;
 
 import game.backend.cell.Cell;
 import game.backend.cell.GeneralGeneratorCell;
+import game.backend.cell.GeneratorCell;
 import game.backend.element.*;
 import game.backend.move.Move;
 import game.backend.move.MoveMaker;
@@ -36,7 +37,7 @@ public abstract class Grid {
 		Cell candyGenCell;
 		wallCell = new Cell(this);
 		wallCell.setContent(new Wall());
-		candyGenCell = new GeneralGeneratorCell(this);
+		candyGenCell = new CandyGeneratorCell(this);
 
 		//corners
 		g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
@@ -105,7 +106,23 @@ public abstract class Grid {
 		}
 		fillCells();
 		fallElements();
-	}	
+		setUpperCells(new GeneralGeneratorCell(this));
+	}
+
+	private void setUpperCells(GeneratorCell generator){
+		Cell candyGenCell = generator;
+		Cell wallCell = new Cell(this);
+		wallCell.setContent(new Wall());
+
+		//corners
+		g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
+		g()[0][SIZE-1].setAround(candyGenCell, g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
+
+		//upper line cells
+		for (int j = 1; j < SIZE-1; j++) {
+			g()[0][j].setAround(candyGenCell,g()[1][j],g()[0][j-1],g()[0][j+1]);
+		}
+	}
 
 	/** Devuelve el contenido de la celda */
 	public Element get(int i, int j) {

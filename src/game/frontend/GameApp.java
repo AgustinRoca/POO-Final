@@ -15,7 +15,7 @@ public class GameApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		CandyGame game = new CandyGame(Level2.class);
+		CandyGame game = new CandyGame(Level1.class);
 		CandyFrame frame = new CandyFrame(game);
 		Scene scene = new Scene(frame);
 		primaryStage.setResizable(false);
