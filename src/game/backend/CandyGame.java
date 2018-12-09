@@ -64,11 +64,18 @@ public class CandyGame implements GameListener {
 	public long getRequiredScore(){
 		return grid.getRequiredScore();
 	}
+
+	public int getCherriesLeftToExplode(){ return grid.getHazelnutsLeftToExploded();}
+
+	public int getHazelnutsLeftToExplode(){ return grid.getCherriesLeftToExplode();}
+
+
+
 	@Override
 	public void cellExplosion(Element e) {
 		state.addScore(e.getScore());
 	}
-	
+
 	@Override
 	public void gridUpdated() {
 		//
