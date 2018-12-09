@@ -40,7 +40,7 @@ public abstract class Move {
 
 	protected void clearContent(int i, int j) {
 
-		if (grid.getCell(i,j).getContent() instanceof Fruit && j == (Grid.SIZE - 1)){
+		if (!(grid.getCell(i,j).getContent() instanceof Fruit && j != (Grid.SIZE - 1))){
 			grid.clearContent(i, j);
 		}
 	}
