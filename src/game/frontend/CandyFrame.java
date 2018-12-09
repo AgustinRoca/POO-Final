@@ -8,9 +8,12 @@ import game.backend.element.Element;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
+import javafx.scene.Group;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 
 public class CandyFrame extends VBox {
@@ -50,9 +53,16 @@ public class CandyFrame extends VBox {
 						int finalJ = j;
 						Cell cell = CandyFrame.this.game.get(i, j);
 						Element element = cell.getContent();
-						Image image = images.getImage(element);
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
-						timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image)));
+						if(cell.isJailed()){
+							Image combined = images.getImage("JAIL-" + element.getFullKey());
+							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
+							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, combined)));
+						}
+						else {
+							Image image = images.getImage(element);
+							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, null)));
+							timeLine.getKeyFrames().add(new KeyFrame(frameTime, e -> boardPanel.setImage(finalI, finalJ, image)));
+						}
 					}
 					frameTime = frameTime.add(frameGap);
 				}

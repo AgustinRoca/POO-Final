@@ -2,7 +2,6 @@ package game.frontend;
 
 import game.backend.element.*;
 import javafx.scene.image.Image;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,8 +20,10 @@ public class ImageManager {
 		images.put(new Wall().getKey(),  new Image(IMAGE_PATH + "wall.png"));
 		images.put(new Cherry().getKey(),  new Image(IMAGE_PATH + "cherry.png"));
 		images.put(new Hazelnut().getKey(),  new Image(IMAGE_PATH + "hazelnut.png"));
+		images.put("JAIL", new Image( IMAGE_PATH + "jail.png"));
 		for (CandyColor cc: CandyColor.values()) {
 			images.put(new Candy(cc).getFullKey(),   new Image(IMAGE_PATH + cc.toString().toLowerCase() + "Candy.png"));
+			images.put("JAIL-" + new Candy(cc).getFullKey(), getJailedImage(new Candy(cc)));
 		}
 		for (CandyColor cc: CandyColor.values()) {
 			wc.setColor(cc);
@@ -40,6 +41,14 @@ public class ImageManager {
 
 	public Image getImage(Element e) {
 		return images.get(e.getFullKey());
+	}
+
+	public Image getImage(String s){
+		return images.get(s);
+	}
+
+	public Image getJailedImage(Element e){
+		return new Image(IMAGE_PATH + "jailed-" + e.getFullKey() + ".png");
 	}
 
 }

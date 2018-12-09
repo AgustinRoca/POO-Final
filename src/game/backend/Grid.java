@@ -1,6 +1,7 @@
 package game.backend;
 
 import game.backend.cell.Cell;
+import game.backend.cell.GeneralGeneratorCell;
 import game.backend.element.*;
 import game.backend.move.Move;
 import game.backend.move.MoveMaker;
@@ -25,11 +26,47 @@ public abstract class Grid {
 	private int cherriesLeftToPut;
 	private int cherriesLeftToExplode = 0;
 	private int hazelnutsLeftToExplode = 0;
+	private int jailsLeft = 0;
 
     protected abstract GameState newState();
 
 	/** Rellena todas las celdas del juego*/
-	protected abstract void fillCells();
+	protected void fillCells(){
+		Cell wallCell;
+		Cell candyGenCell;
+		wallCell = new Cell(this);
+		wallCell.setContent(new Wall());
+		candyGenCell = new GeneralGeneratorCell(this);
+
+		//corners
+		g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
+		g()[0][SIZE-1].setAround(candyGenCell, g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
+		g()[SIZE-1][0].setAround(g()[SIZE-2][0], wallCell, wallCell, g()[SIZE-1][1]);
+		g()[SIZE-1][SIZE-1].setAround(g()[SIZE-2][SIZE-1], wallCell, g()[SIZE-1][SIZE-2], wallCell);
+
+		//upper line cells
+		for (int j = 1; j < SIZE-1; j++) {
+			g()[0][j].setAround(candyGenCell,g()[1][j],g()[0][j-1],g()[0][j+1]);
+		}
+		//bottom line cells
+		for (int j = 1; j < SIZE-1; j++) {
+			g()[SIZE-1][j].setAround(g()[SIZE-2][j], wallCell, g()[SIZE-1][j-1],g()[SIZE-1][j+1]);
+		}
+		//left line cells
+		for (int i = 1; i < SIZE-1; i++) {
+			g()[i][0].setAround(g()[i-1][0],g()[i+1][0], wallCell ,g()[i][1]);
+		}
+		//right line cells
+		for (int i = 1; i < SIZE-1; i++) {
+			g()[i][SIZE-1].setAround(g()[i-1][SIZE-1],g()[i+1][SIZE-1], g()[i][SIZE-2], wallCell);
+		}
+		//central cells
+		for (int i = 1; i < SIZE-1; i++) {
+			for (int j = 1; j < SIZE-1; j++) {
+				g()[i][j].setAround(g()[i-1][j],g()[i+1][j],g()[i][j-1],g()[i][j+1]);
+			}
+		}
+	}
 	
 	protected Cell[][] g() {
 		return g;
@@ -39,6 +76,18 @@ public abstract class Grid {
 		this.cherriesLeftToExplode = requiredCherries;
 		this.hazelnutsLeftToPut = requiredHazelnuts;
 		this.hazelnutsLeftToExplode = requiredHazelnuts;
+	}
+
+	protected void incrementJailsLeft(){
+		jailsLeft++;
+	}
+
+	public void decrementJailsLeft(){
+		jailsLeft--;
+	}
+
+	public int getJailsLeft() {
+		return jailsLeft;
 	}
 
 	protected GameState state(){

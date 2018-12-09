@@ -16,10 +16,12 @@ public class RightLevelPanel extends BorderPane{
         hazelnutsLabel = new Label(String.format("Hazelnuts left to Explode: %d   ", hazelntusRequired));
         hazelnutsLabel.setAlignment(Pos.BOTTOM_CENTER);
         hazelnutsLabel.setStyle("-fx-font-size: 15");
-        setBottom(hazelnutsLabel);
+        setCenter(hazelnutsLabel);
+
     }
     public void update(int cherriesLeftToExplode, int hazelnutsLeftToExplode){
         cherriesLabel.setText(String.format("Cherries left to Explode: %d   ", cherriesLeftToExplode));
         hazelnutsLabel.setText(String.format("Hazelnuts left to Explode: %d   ", hazelnutsLeftToExplode));
+
     }
 }

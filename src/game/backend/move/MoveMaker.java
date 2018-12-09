@@ -79,9 +79,11 @@ public class MoveMaker {
 
 	// devuelve un movimiento
 	public Move getMove(int i1, int j1, int i2, int j2) {
-		Move move = map.get(grid.get(i1, j1).getKey() + grid.get(i2, j2).getKey());
-		move.setCoords(i1, j1, i2, j2);
-		return move;
+		if(!(grid.getCell(i1, j1).isJailed() || grid.getCell(i2, j2).isJailed())) {
+			Move move = map.get(grid.get(i1, j1).getKey() + grid.get(i2, j2).getKey());
+			move.setCoords(i1, j1, i2, j2);
+			return move;
+		}
+		return new JailMove(grid);
 	}
-
 }

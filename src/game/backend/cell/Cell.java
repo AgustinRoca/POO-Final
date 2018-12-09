@@ -11,10 +11,19 @@ public class Cell {
 	private Grid grid;
 	private Cell[] around = new Cell[Direction.values().length];
 	private Element content;
+	private boolean isJailed = false;
 	
 	public Cell(Grid grid) {
 		this.grid = grid;
 		this.content = new Nothing();
+	}
+
+	public boolean isJailed() {
+		return isJailed;
+	}
+
+	public void setJailed(boolean jailed) {
+		isJailed = jailed;
 	}
 
 	/** Inicializa las celdas de al lado de la celda*/
@@ -32,7 +41,7 @@ public class Cell {
 
 	/** Devuelve true si se puede mover */
 	public boolean isMovable(){
-		return content.isMovable();
+		return content.isMovable() && !isJailed;
 	}
 
 	/** Devuelve true si no hay nada solido en la celda */
@@ -54,6 +63,10 @@ public class Cell {
 				expandExplosion(explosionCascade); 
 			}
 			this.content = new Nothing();
+		}
+		if(isJailed){
+			isJailed = false;
+			getGrid().decrementJailsLeft();
 		}
 	}
 
