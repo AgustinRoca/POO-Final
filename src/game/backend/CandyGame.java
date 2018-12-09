@@ -69,7 +69,7 @@ public class CandyGame implements GameListener {
 
 	public int getHazelnutsLeftToExplode(){ return grid.getHazelnutsLeftToExplode();}
 
-
+	public Class<?> nextLevel() { return grid.nextLevel();};
 
 	@Override
 	public void cellExplosion(Element e) {
@@ -80,5 +80,6 @@ public class CandyGame implements GameListener {
 	public void gridUpdated() {
 		//
 	}
+
 
 }

@@ -2,12 +2,11 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.Grid;
-
 public class Level2 extends Grid {
     private static int REQUIRED_SCORE = 5000;
     private static int MAX_MOVES = 20;
-    private static int REQUIRED_CHERRIES = 0;
-    private static int REQUIRED_HAZELNUTS = 0;
+    private static int REQUIRED_CHERRIES = 10;
+    private static int REQUIRED_HAZELNUTS = 10;
 
 
     public Level2(){
@@ -56,5 +55,5 @@ public class Level2 extends Grid {
     public long getRequiredScore(){
         return REQUIRED_SCORE;
     }
-
+    public Class<?> nextLevel() {return this.getClass();}// return Level3.class;} falta lvl 3
 }

@@ -16,6 +16,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.Optional;
@@ -100,7 +101,8 @@ public class CandyFrame extends VBox {
 							Optional<ButtonType> result = alert.showAndWait();
 							if(result.isPresent()) {
 								if (result.get() == ButtonType.OK) {
-									//insert level change here
+									new LevelRunner(game.nextLevel()).start(new Stage());
+									Platform.exit();
 								}
 								else
 									Platform.exit();

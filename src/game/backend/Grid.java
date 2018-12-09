@@ -1,10 +1,6 @@
 package game.backend;
 
-import com.sun.tools.javah.Gen;
-import game.backend.cell.CandyGeneratorCell;
-import game.backend.cell.Cell;
-import game.backend.cell.GeneralGeneratorCell;
-import game.backend.cell.GeneratorCell;
+import game.backend.cell.*;
 import game.backend.element.*;
 import game.backend.move.Move;
 import game.backend.move.MoveMaker;
@@ -276,5 +272,6 @@ public abstract class Grid {
 	public abstract String getLevelName();
 	public abstract long getMaxMoves();
 	public abstract long getRequiredScore();
+	public abstract Class<?> nextLevel();
 }
 

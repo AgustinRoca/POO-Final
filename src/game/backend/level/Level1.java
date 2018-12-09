@@ -45,5 +45,6 @@ public class Level1 extends Grid {
 	public long getRequiredScore(){
 		return REQUIRED_SCORE;
 	}
+	public Class<?> nextLevel() { return Level2.class;}
 
 }
