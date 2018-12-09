@@ -2,9 +2,8 @@ package game.frontend;
 
 import game.backend.level.Level1;
 import game.backend.level.Level2;
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
 import javafx.stage.Stage;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,10 +14,8 @@ public class LevelMenu extends JFrame implements ActionListener {
     private JButton level2Button;
     private JButton level3Button;
     private JButton exitButton;
-    private Stage stage;
 
-        LevelMenu(Stage stage){
-        this.stage = stage;
+    LevelMenu(Stage stage){
         setSize(300,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -34,7 +31,7 @@ public class LevelMenu extends JFrame implements ActionListener {
         level3Button.addActionListener(this);
         add(level3Button);
         exitButton=new JButton("Exit");
-        //exitButton.addActionListener(this);
+            exitButton.addActionListener(this);
         add(exitButton);
 
         pack();
@@ -42,7 +39,6 @@ public class LevelMenu extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e){
-
 
         if(e.getSource()==level1Button){
             dispose();
@@ -54,7 +50,7 @@ public class LevelMenu extends JFrame implements ActionListener {
         }
         if(e.getSource()==level3Button){
             dispose();
-        //    new LevelRunner(Level3.class).start(stage);
+            //  new LevelRunner(Level3.class).start();
         } else
             System.exit(0);
 

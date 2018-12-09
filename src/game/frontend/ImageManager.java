@@ -2,6 +2,7 @@ package game.frontend;
 
 import game.backend.element.*;
 import javafx.scene.image.Image;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +48,7 @@ public class ImageManager {
 		return images.get(s);
 	}
 
-	public Image getJailedImage(Element e){
+	private Image getJailedImage(Element e){
 		return new Image(IMAGE_PATH + "jailed-" + e.getFullKey() + ".png");
 	}
 

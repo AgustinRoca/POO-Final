@@ -1,8 +1,8 @@
 package game.backend.cell;
 
 import game.backend.Grid;
-import game.backend.element.CandyColor;
 import game.backend.element.Candy;
+import game.backend.element.CandyColor;
 import game.backend.element.Element;
 
 public class CandyGeneratorCell extends GeneratorCell {

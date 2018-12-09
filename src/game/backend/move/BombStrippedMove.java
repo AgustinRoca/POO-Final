@@ -1,11 +1,7 @@
 package game.backend.move;
 
 import game.backend.Grid;
-import game.backend.element.Bomb;
-import game.backend.element.Candy;
-import game.backend.element.CandyColor;
-import game.backend.element.HorizontalStripedCandy;
-import game.backend.element.VerticalStripedCandy;
+import game.backend.element.*;
 
 public class BombStrippedMove extends Move {
 

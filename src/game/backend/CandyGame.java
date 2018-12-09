@@ -2,6 +2,7 @@ package game.backend;
 
 import game.backend.cell.Cell;
 import game.backend.element.Element;
+
 import java.lang.reflect.InvocationTargetException;
 
 public class CandyGame implements GameListener {
@@ -69,7 +70,9 @@ public class CandyGame implements GameListener {
 
 	public int getHazelnutsLeftToExplode(){ return grid.getHazelnutsLeftToExplode();}
 
-	public Class<?> nextLevel() { return grid.nextLevel();};
+	public Class<?> nextLevel() {
+		return grid.nextLevel();
+	}
 
 	@Override
 	public void cellExplosion(Element e) {

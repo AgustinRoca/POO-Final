@@ -3,7 +3,6 @@ package game.backend.move;
 import game.backend.Figure;
 import game.backend.FigureDetector;
 import game.backend.Grid;
-import game.backend.element.Fruit;
 
 public class CandyMove extends Move {
 

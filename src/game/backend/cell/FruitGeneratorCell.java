@@ -1,9 +1,9 @@
 package game.backend.cell;
 
 import game.backend.Grid;
-import game.backend.element.Hazelnut;
 import game.backend.element.Cherry;
 import game.backend.element.Element;
+import game.backend.element.Hazelnut;
 
 
 public class FruitGeneratorCell extends GeneratorCell {

@@ -5,8 +5,6 @@ import game.backend.CandyGame;
 import game.backend.GameListener;
 import game.backend.cell.Cell;
 import game.backend.element.Element;
-import game.backend.level.Level1;
-import game.backend.level.Level2;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -15,8 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.util.Optional;

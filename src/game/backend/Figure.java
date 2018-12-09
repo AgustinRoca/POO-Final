@@ -1,14 +1,6 @@
 package game.backend;
 
-import game.backend.element.Bomb;
-import game.backend.element.Candy;
-import game.backend.element.CandyColor;
-import game.backend.element.Element;
-import game.backend.element.HorizontalStripedCandy;
-import game.backend.element.VerticalStripedCandy;
-import game.backend.element.WrappedCandy;
-
-import java.awt.Point;
+import game.backend.element.*;
 
 public enum Figure {
 	
