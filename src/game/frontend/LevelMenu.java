@@ -1,4 +1,4 @@
-package game.frontend;
+/*package game.frontend;
 
 import game.backend.level.Level1;
 import game.backend.level.Level2;
@@ -42,17 +42,18 @@ public class LevelMenu extends JFrame implements ActionListener {
 
         if(e.getSource()==level1Button){
             dispose();
-            new LevelRunner(Level1.class).start();
+            new LevelRunner(Level1.class).run();
         }
         if(e.getSource()==level2Button){
             dispose();
-            new LevelRunner(Level2.class).start();
+            new LevelRunner(Level2.class).run();
         }
         if(e.getSource()==level3Button){
             dispose();
-            //  new LevelRunner(Level3.class).start();
+            //  new LevelRunner(Level3.class).run();
         } else
             System.exit(0);
 
     }
 }
+*/
