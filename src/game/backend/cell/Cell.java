@@ -55,7 +55,7 @@ public class Cell {
 
 	/** Explota el contenido de la celda (si hay paquete o rayado hace esa explosion tambien), rellena esos lugares con Nothing */
 	public void clearContent() {
-		if (content.isMovable()) {
+		if (isMovable()) {
 			Direction[] explosionCascade = content.explode();
 			grid.cellExplosion(content);
 			this.content = new Nothing();

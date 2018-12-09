@@ -26,6 +26,7 @@ public class MoveMaker {
 		map.put(new Candy().getKey() + new Bomb().getKey(), new BombMove(grid));
 		map.put(new Candy().getKey() + new Cherry().getKey(), new CandyMove(grid));
 		map.put(new Candy().getKey() + new Hazelnut().getKey(), new CandyMove(grid));
+		map.put(new Candy().getKey() + new Nothing().getKey(), new NothingMove(grid));
 
 		map.put(new HorizontalStripedCandy().getKey() + new Candy().getKey(), new CandyMove(grid));
 		map.put(new HorizontalStripedCandy().getKey() + new HorizontalStripedCandy().getKey(), new TwoStripedMove(grid));
@@ -34,7 +35,7 @@ public class MoveMaker {
 		map.put(new HorizontalStripedCandy().getKey() + new Bomb().getKey(), new BombStrippedMove(grid));
 		map.put(new HorizontalStripedCandy().getKey() + new Cherry().getKey(), new CandyMove(grid));
 		map.put(new HorizontalStripedCandy().getKey() + new Hazelnut().getKey(), new CandyMove(grid));
-
+		map.put(new HorizontalStripedCandy().getKey() + new Nothing().getKey(), new NothingMove(grid));
 
 		map.put(new VerticalStripedCandy().getKey() + new Candy().getKey(), new CandyMove(grid));
 		map.put(new VerticalStripedCandy().getKey() + new HorizontalStripedCandy().getKey(), new TwoStripedMove(grid));
@@ -43,6 +44,7 @@ public class MoveMaker {
 		map.put(new VerticalStripedCandy().getKey() + new Bomb().getKey(), new BombStrippedMove(grid));
 		map.put(new VerticalStripedCandy().getKey() + new Cherry().getKey(), new CandyMove(grid));
 		map.put(new VerticalStripedCandy().getKey() + new Hazelnut().getKey(), new CandyMove(grid));
+		map.put(new VerticalStripedCandy().getKey() + new Nothing().getKey(), new NothingMove(grid));
 
 		map.put(new WrappedCandy().getKey() + new Candy().getKey(), new CandyMove(grid));
 		map.put(new WrappedCandy().getKey() + new HorizontalStripedCandy().getKey(), new WrappedStripedMove(grid));
@@ -51,6 +53,7 @@ public class MoveMaker {
 		map.put(new WrappedCandy().getKey() + new Bomb().getKey(), new BombWrappedMove(grid));
 		map.put(new WrappedCandy().getKey() + new Cherry().getKey(), new CandyMove(grid));
 		map.put(new WrappedCandy().getKey() + new Hazelnut().getKey(), new CandyMove(grid));
+		map.put(new WrappedCandy().getKey() + new Nothing().getKey(), new NothingMove(grid));
 
 		map.put(new Bomb().getKey() + new Candy().getKey(), new BombMove(grid));
 		map.put(new Bomb().getKey() + new HorizontalStripedCandy().getKey(), new BombStrippedMove(grid));
@@ -59,6 +62,7 @@ public class MoveMaker {
 		map.put(new Bomb().getKey() + new Bomb().getKey(), new TwoBombMove(grid));
 		map.put(new Bomb().getKey() + new Cherry().getKey(), new FruitMove(grid));
 		map.put(new Bomb().getKey() + new Hazelnut().getKey(), new FruitMove(grid));
+		map.put(new Bomb().getKey() + new Nothing().getKey(), new NothingMove(grid));
 
 		map.put(new Cherry().getKey() + new Candy().getKey(), new CandyMove(grid));
 		map.put(new Cherry().getKey() + new HorizontalStripedCandy().getKey(), new CandyMove(grid));
@@ -67,6 +71,7 @@ public class MoveMaker {
 		map.put(new Cherry().getKey() + new Bomb().getKey(), new FruitMove(grid));
 		map.put(new Cherry().getKey() + new Cherry().getKey(), new FruitMove(grid));
 		map.put(new Cherry().getKey() + new Hazelnut().getKey(), new FruitMove(grid));
+		map.put(new Cherry().getKey() + new Nothing().getKey(), new NothingMove(grid));
 
 		map.put(new Hazelnut().getKey() + new Candy().getKey(), new CandyMove(grid));
 		map.put(new Hazelnut().getKey() + new HorizontalStripedCandy().getKey(), new CandyMove(grid));
@@ -75,6 +80,16 @@ public class MoveMaker {
 		map.put(new Hazelnut().getKey() + new Bomb().getKey(), new FruitMove(grid));
 		map.put(new Hazelnut().getKey() + new Cherry().getKey(), new FruitMove(grid));
 		map.put(new Hazelnut().getKey() + new Hazelnut().getKey(), new FruitMove(grid));
+		map.put(new Hazelnut().getKey() + new Nothing().getKey(), new NothingMove(grid));
+
+		map.put(new Nothing().getKey() + new Candy().getKey(), new NothingMove(grid));
+		map.put(new Nothing().getKey() + new HorizontalStripedCandy().getKey(), new NothingMove(grid));
+		map.put(new Nothing().getKey() + new VerticalStripedCandy().getKey(), new NothingMove(grid));
+		map.put(new Nothing().getKey() + new WrappedCandy().getKey(), new NothingMove(grid));
+		map.put(new Nothing().getKey() + new Bomb().getKey(), new NothingMove(grid));
+		map.put(new Nothing().getKey() + new Cherry().getKey(), new NothingMove(grid));
+		map.put(new Nothing().getKey() + new Hazelnut().getKey(), new NothingMove(grid));
+		map.put(new Nothing().getKey() + new Nothing().getKey(), new NothingMove(grid));
 	}
 
 	// devuelve un movimiento
