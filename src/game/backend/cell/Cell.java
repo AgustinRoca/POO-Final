@@ -66,7 +66,8 @@ public class Cell {
 
 	/** explota lo que tenga que explotar */
 	private void explode(Direction d) {
-		clearContent();
+		if(!(content instanceof Fruit))
+			clearContent();
 		if (this.around[d.ordinal()] != null)
 			this.around[d.ordinal()].explode(d);
 	}
