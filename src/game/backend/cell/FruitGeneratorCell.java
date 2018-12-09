@@ -7,6 +7,7 @@ import game.backend.element.Element;
 
 
 public class FruitGeneratorCell extends GeneratorCell {
+
     public FruitGeneratorCell(Grid grid) {
         super(grid);
     }
@@ -14,9 +15,12 @@ public class FruitGeneratorCell extends GeneratorCell {
     @Override
     public Element getContent() {
         if (Math.random() > 0.5){
-            return new Hazelnut();
+            if (getGrid().takeCherry()) {
+                return new Cherry();
+            } else return new CandyGeneratorCell(getGrid()).getContent();
         }
-        return new Cherry();
+        if(getGrid().takeHazelnut()){
+            return new Hazelnut();
+        } else return new CandyGeneratorCell(getGrid()).getContent();
     }
-
 }

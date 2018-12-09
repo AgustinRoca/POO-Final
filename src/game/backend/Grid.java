@@ -21,8 +21,8 @@ public abstract class Grid {
 	private List<GameListener> listeners = new ArrayList<>();
 	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
-	private int hazelnutsGenerated = 0;
-	private int cherriesGenerated = 0;
+	private int hazelnutsLeft;
+	private int cherriesLeft;
 	private int cherriesExploded = 0;
 	private int hazelnutsExploded = 0;
 
@@ -34,7 +34,11 @@ public abstract class Grid {
 	protected Cell[][] g() {
 		return g;
 	}
-	
+	protected void newGrid(int requiredCherries, int requiredHazelnuts){
+		this.cherriesLeft = requiredCherries;
+		this.hazelnutsLeft = requiredHazelnuts;
+	}
+
 	protected GameState state(){
 		return state;
 	}
@@ -62,30 +66,21 @@ public abstract class Grid {
 		return g[i][j];
 	}
 
-    public int getHazelnutsGenerated() {
-        return hazelnutsGenerated;
-    }
+    public boolean takeCherry(){
+		if (cherriesLeft > 0){
+			cherriesLeft--;
+			return true;
+		}
+		return false;
 
-    public int getCherriesGenerated() {
-	    return cherriesGenerated;
     }
-
-    public void incrementHazelnutsGenerated(){
-	    hazelnutsGenerated++;
-    }
-
-    public void incrementCherriesGenerated(){
-	    cherriesGenerated++;
-    }
-
-    public int getMaxCherries(){
-	    return 4;
-    }
-
-    public int getMaxHazelnuts(){
-	    return 0;
-    }
-
+    public boolean takeHazelnut(){
+		if (hazelnutsLeft > 0){
+			hazelnutsLeft--;
+			return true;
+		}
+		return false;
+	}
     /** Usa el fallUpperContent de cada cell si la cell no esta vacia */
     private void fallElements() {
 		//Porque empieza de arriba a la derecha tho? porque no empezar los dos con 0? o los dos con SIZE?

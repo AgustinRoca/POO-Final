@@ -10,10 +10,13 @@ public class Level1 extends Grid {
 	
 	private static int REQUIRED_SCORE = 5000; 
 	private static int MAX_MOVES = 20;
-
+	private static int REQUIRED_CHERRIES = 5;
+	private static int REQUIRED_HAZELNUTS = 5;
 	private Cell wallCell;
 	private Cell candyGenCell;
-	
+	public Level1(){
+		newGrid(REQUIRED_CHERRIES,REQUIRED_HAZELNUTS);
+	}
 	@Override
 	protected GameState newState() {
 		return new Level1State(REQUIRED_SCORE, MAX_MOVES);
@@ -90,10 +93,5 @@ public class Level1 extends Grid {
 	}
 	public long getRequiredScore(){
 		return REQUIRED_SCORE;
-	}
-
-	@Override
-	public int getMaxCherries() {
-		return 2;
 	}
 }
