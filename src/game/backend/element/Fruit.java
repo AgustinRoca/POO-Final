@@ -8,6 +8,6 @@ public abstract class Fruit extends Element{
 
     @Override
     public long getScore() {
-        return 500;
+        return 3000;
     }
 }
