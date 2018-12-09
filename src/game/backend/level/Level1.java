@@ -74,7 +74,7 @@ public class Level1 extends Grid {
 		}
 
 		public boolean playerWon() {
-			return getScore() > requiredScore && getCherriesLeftToExplode()==REQUIRED_CHERRIES && getHazelnutsLeftToExploded()==REQUIRED_HAZELNUTS;
+			return getScore() > requiredScore && getCherriesLeftToExplode()==0 && getHazelnutsLeftToExplode()==0;
 		}
 	}
 	public String getLevelName(){

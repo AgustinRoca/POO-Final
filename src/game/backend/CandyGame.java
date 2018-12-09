@@ -65,7 +65,7 @@ public class CandyGame implements GameListener {
 		return grid.getRequiredScore();
 	}
 
-	public int getCherriesLeftToExplode(){ return grid.getHazelnutsLeftToExploded();}
+	public int getCherriesLeftToExplode(){ return grid.getHazelnutsLeftToExplode();}
 
 	public int getHazelnutsLeftToExplode(){ return grid.getCherriesLeftToExplode();}
 

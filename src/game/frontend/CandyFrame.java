@@ -28,7 +28,7 @@ public class CandyFrame extends VBox {
 		this.game = game;
 		game.initGame();
 		getChildren().add(new AppMenu());
-		levelPanel = new LevelPanel(game.getLevelName(), game.getRequiredScore(), game.getMaxMoves());
+		levelPanel = new LevelPanel(game.getLevelName(), game.getRequiredScore(), game.getMaxMoves(), game.getCherriesLeftToExplode(), game.getCherriesLeftToExplode());
 		getChildren().add(levelPanel);
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
@@ -72,7 +72,7 @@ public class CandyFrame extends VBox {
 				if (newPoint != null && newPoint.getY() > 0) {
 					System.out.println("Get second = " +  newPoint);
 					if (game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY()))
-						levelPanel.updateMoves();
+						levelPanel.update(game.getCherriesLeftToExplode(), game.getCherriesLeftToExplode());
 					String message = ((Long)game().getScore()).toString();
 					if (game().isFinished()) {
 						if (game().playerWon()) {

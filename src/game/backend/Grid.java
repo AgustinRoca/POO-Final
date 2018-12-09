@@ -24,7 +24,7 @@ public abstract class Grid {
 	private int hazelnutsLeftToPut;
 	private int cherriesLeftToPut;
 	private int cherriesLeftToExplode = 0;
-	private int hazelnutsLeftToExploded = 0;
+	private int hazelnutsLeftToExplode = 0;
 
     protected abstract GameState newState();
 
@@ -38,7 +38,7 @@ public abstract class Grid {
 		this.cherriesLeftToPut = requiredCherries;
 		this.cherriesLeftToExplode = requiredCherries;
 		this.hazelnutsLeftToPut = requiredHazelnuts;
-		this.hazelnutsLeftToExploded = requiredHazelnuts;
+		this.hazelnutsLeftToExplode = requiredHazelnuts;
 	}
 
 	protected GameState state(){
@@ -146,7 +146,7 @@ public abstract class Grid {
 			clearContent(x,y);
 		}
 		if ( content instanceof Hazelnut && x == SIZE -1 ){
-			hazelnutsLeftToExploded--;
+			hazelnutsLeftToExplode--;
 			clearContent(x,y);
 		}
 	}
@@ -201,8 +201,8 @@ public abstract class Grid {
 	public int getCherriesLeftToExplode() {
 		return cherriesLeftToExplode;
 	}
-	public int getHazelnutsLeftToExploded(){
-		return hazelnutsLeftToExploded;
+	public int getHazelnutsLeftToExplode(){
+		return hazelnutsLeftToExplode;
 	}
 
 	public abstract String getLevelName();
