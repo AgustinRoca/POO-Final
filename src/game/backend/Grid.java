@@ -21,10 +21,10 @@ public abstract class Grid {
 	private List<GameListener> listeners = new ArrayList<>();
 	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
-	private int hazelnutsLeft;
-	private int cherriesLeft;
-	private int cherriesExploded = 0;
-	private int hazelnutsExploded = 0;
+	private int hazelnutsLeftToPut;
+	private int cherriesLeftToPut;
+	private int cherriesLeftToExplode = 0;
+	private int hazelnutsLeftToExploded = 0;
 
     protected abstract GameState newState();
 
@@ -35,8 +35,10 @@ public abstract class Grid {
 		return g;
 	}
 	protected void newGrid(int requiredCherries, int requiredHazelnuts){
-		this.cherriesLeft = requiredCherries;
-		this.hazelnutsLeft = requiredHazelnuts;
+		this.cherriesLeftToPut = requiredCherries;
+		this.cherriesLeftToExplode = requiredCherries;
+		this.hazelnutsLeftToPut = requiredHazelnuts;
+		this.hazelnutsLeftToExploded = requiredHazelnuts;
 	}
 
 	protected GameState state(){
@@ -67,16 +69,16 @@ public abstract class Grid {
 	}
 
     public boolean takeCherry(){
-		if (cherriesLeft > 0){
-			cherriesLeft--;
+		if (cherriesLeftToPut > 0){
+			cherriesLeftToPut--;
 			return true;
 		}
 		return false;
 
     }
     public boolean takeHazelnut(){
-		if (hazelnutsLeft > 0){
-			hazelnutsLeft--;
+		if (hazelnutsLeftToPut > 0){
+			hazelnutsLeftToPut--;
 			return true;
 		}
 		return false;
@@ -140,11 +142,11 @@ public abstract class Grid {
 	public void FruitRemoveCheck(int x, int y){
 		Element content = getCell(x,y).getContent();
 		if ( content instanceof Cherry && x == SIZE - 1){
-			cherriesExploded++;
+			cherriesLeftToExplode--;
 			clearContent(x,y);
 		}
 		if ( content instanceof Hazelnut && x == SIZE -1 ){
-			hazelnutsExploded++;
+			hazelnutsLeftToExploded--;
 			clearContent(x,y);
 		}
 	}
@@ -196,11 +198,11 @@ public abstract class Grid {
 		}
 	}
 
-	public int getCherriesExploded() {
-		return cherriesExploded;
+	public int getCherriesLeftToExplode() {
+		return cherriesLeftToExplode;
 	}
-	public int getHazelnutsExploded(){
-		return hazelnutsExploded;
+	public int getHazelnutsLeftToExploded(){
+		return hazelnutsLeftToExploded;
 	}
 
 	public abstract String getLevelName();
