@@ -20,6 +20,7 @@ public class CandyFrame extends VBox {
 	private BoardPanel boardPanel;
 	private ScorePanel scorePanel;
 	private ImageManager images;
+	private AppMenu appMenu;
 	private Point2D lastPoint;
 	private LevelPanel levelPanel;
 	private CandyGame game;
@@ -27,7 +28,8 @@ public class CandyFrame extends VBox {
 	public CandyFrame(CandyGame game) {
 		this.game = game;
 		game.initGame();
-		getChildren().add(new AppMenu());
+		this.appMenu = new AppMenu();
+		getChildren().add(appMenu);
 		levelPanel = new LevelPanel(game.getLevelName(), game.getRequiredScore(), game.getMaxMoves());
 		getChildren().add(levelPanel);
 		images = new ImageManager();
@@ -65,10 +67,10 @@ public class CandyFrame extends VBox {
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null || lastPoint.getY() < 0) {
-				lastPoint = translateCoords((event.getX()), event.getY()-levelPanel.getHeight());
+				lastPoint = translateCoords((event.getX()), event.getY());
 				System.out.println("Get first = " +  lastPoint);
 			} else {
-				Point2D newPoint = translateCoords(event.getX(), event.getY()-levelPanel.getHeight());
+				Point2D newPoint = translateCoords(event.getX(), event.getY());
 				if (newPoint != null && newPoint.getY() > 0) {
 					System.out.println("Get second = " +  newPoint);
 					if (game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY()))
@@ -95,8 +97,8 @@ public class CandyFrame extends VBox {
 
 	private Point2D translateCoords(double x, double y) {
 		double i = x / CELL_SIZE;
-		double j = y / CELL_SIZE;
-		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
+		double j = (y - levelPanel.getHeight() - appMenu.getHeight()) / CELL_SIZE;
+		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(i, j) : null;
 	}
 
 }
