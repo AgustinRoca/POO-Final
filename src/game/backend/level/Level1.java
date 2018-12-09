@@ -10,8 +10,8 @@ public class Level1 extends Grid {
 	
 	private static int REQUIRED_SCORE = 5000; 
 	private static int MAX_MOVES = 20;
-	private static int REQUIRED_CHERRIES = 2;
-	private static int REQUIRED_HAZELNUTS = 1;
+	private static int REQUIRED_CHERRIES = 5;
+	private static int REQUIRED_HAZELNUTS = 3;
 	private Cell wallCell;
 	private Cell candyGenCell;
 	public Level1(){
