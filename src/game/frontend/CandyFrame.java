@@ -98,7 +98,7 @@ public class CandyFrame extends VBox {
 	private Point2D translateCoords(double x, double y) {
 		double i = x / CELL_SIZE;
 		double j = (y - levelPanel.getHeight() - appMenu.getHeight()) / CELL_SIZE;
-		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(i, j) : null;
+		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
 	}
 
 }
