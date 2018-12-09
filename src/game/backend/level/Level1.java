@@ -6,7 +6,7 @@ import game.backend.Grid;
 public class Level1 extends Grid {
 	
 	private static int REQUIRED_SCORE = 5000; 
-	private static int MAX_MOVES = 20;
+	private static int MAX_MOVES = 1;
 	private static int REQUIRED_CHERRIES = 1;
 	private static int REQUIRED_HAZELNUTS = 2;
 
