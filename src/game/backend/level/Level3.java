@@ -1,20 +1,21 @@
 package game.backend.level;
 
+
 import game.backend.GameState;
 import game.backend.Grid;
-public class Level2 extends Grid {
-    private static int REQUIRED_SCORE = 8500;
+public class Level3 extends Grid {
+    private static int REQUIRED_SCORE = 8000;
     private static int MAX_MOVES = 30;
-    private static int REQUIRED_CHERRIES = 4;
+    private static int REQUIRED_CHERRIES = 2;
     private static int REQUIRED_HAZELNUTS = 3;
 
 
-    public Level2(){
+    public Level3(){
         newGrid(REQUIRED_CHERRIES,REQUIRED_HAZELNUTS);
     }
     @Override
     protected GameState newState() {
-        return new Level2State(REQUIRED_SCORE, MAX_MOVES);
+        return new Level3State(REQUIRED_SCORE, MAX_MOVES);
     }
 
     @Override
@@ -37,8 +38,8 @@ public class Level2 extends Grid {
         return ret;
     }
 
-    private class Level2State extends GameState {
-        public Level2State(long requiredScore, long maxMoves) {
+    private class Level3State extends GameState {
+        public Level3State(long requiredScore, long maxMoves) {
             newGameState(requiredScore,maxMoves);
         }
 
@@ -55,5 +56,5 @@ public class Level2 extends Grid {
     public long getRequiredScore(){
         return REQUIRED_SCORE;
     }
-    public Class<?> nextLevel() {return Level3.class;}
+    public Class<?> nextLevel() {return null;}
 }
