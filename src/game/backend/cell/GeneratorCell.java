@@ -6,7 +6,6 @@ import game.backend.element.Element;
 
 public abstract class GeneratorCell extends Cell{
 
-
     public GeneratorCell(Grid grid) {
         super(grid);
     }

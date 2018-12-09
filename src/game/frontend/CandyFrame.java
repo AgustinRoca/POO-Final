@@ -28,7 +28,7 @@ public class CandyFrame extends VBox {
 		this.game = game;
 		game.initGame();
 		getChildren().add(new AppMenu());
-		levelPanel = new LevelPanel(game.getLevelName(), game.getRequiredScore(), game.getMaxMoves(), game.getCherriesLeftToExplode(), game.getCherriesLeftToExplode());
+		levelPanel = new LevelPanel(game.getLevelName(), game.getRequiredScore(), game.getMaxMoves(), game.getCherriesLeftToExplode(), game.getHazelnutsLeftToExplode());
 		getChildren().add(levelPanel);
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
@@ -69,10 +69,10 @@ public class CandyFrame extends VBox {
 				System.out.println("Get first = " +  lastPoint);
 			} else {
 				Point2D newPoint = translateCoords(event.getX(), event.getY()-levelPanel.getHeight());
-				if (newPoint != null && newPoint.getY() > 0) {
+				if (newPoint != null && newPoint.getY() >= 0) {
 					System.out.println("Get second = " +  newPoint);
 					if (game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY()))
-						levelPanel.update(game.getCherriesLeftToExplode(), game.getCherriesLeftToExplode());
+						levelPanel.update(game.getCherriesLeftToExplode(), game.getHazelnutsLeftToExplode());
 					String message = ((Long)game().getScore()).toString();
 					if (game().isFinished()) {
 						if (game().playerWon()) {
