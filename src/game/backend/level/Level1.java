@@ -24,7 +24,7 @@ public class Level1 extends Grid {
 
 	@Override
 	protected void fillCells() {
-		
+
 		wallCell = new Cell(this);
 		wallCell.setContent(new Wall());
 		candyGenCell = new GeneralGeneratorCell(this);
@@ -82,7 +82,7 @@ public class Level1 extends Grid {
 		}
 		
 		public boolean playerWon() {
-			return getScore() > requiredScore;
+			return getScore() > requiredScore && getCherriesExploded()==REQUIRED_CHERRIES && getHazelnutsExploded()==REQUIRED_HAZELNUTS;
 		}
 	}
 	public String getLevelName(){

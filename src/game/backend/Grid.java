@@ -195,6 +195,14 @@ public abstract class Grid {
 			gl.cellExplosion(e);
 		}
 	}
+
+	public int getCherriesExploded() {
+		return cherriesExploded;
+	}
+	public int getHazelnutsExploded(){
+		return hazelnutsExploded;
+	}
+
 	public abstract String getLevelName();
 	public abstract long getMaxMoves();
 	public abstract long getRequiredScore();
