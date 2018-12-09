@@ -17,10 +17,12 @@ public class FruitGeneratorCell extends GeneratorCell {
         if (Math.random() > 0.5){
             if (getGrid().takeCherry()) {
                 return new Cherry();
-            } else return new CandyGeneratorCell(getGrid()).getContent();
+            } else
+                return new CandyGeneratorCell(getGrid()).getContent();
         }
         if(getGrid().takeHazelnut()){
             return new Hazelnut();
-        } else return new CandyGeneratorCell(getGrid()).getContent();
+        } else
+            return new CandyGeneratorCell(getGrid()).getContent();
     }
 }

@@ -2,6 +2,8 @@ package game.backend.level;
 
 import game.backend.GameState;
 import game.backend.Grid;
+import game.backend.cell.CandyGeneratorCell;
+import game.backend.cell.FruitGeneratorCell;
 import game.backend.cell.GeneralGeneratorCell;
 import game.backend.cell.Cell;
 import game.backend.element.Wall;
@@ -10,8 +12,8 @@ public class Level1 extends Grid {
 	
 	private static int REQUIRED_SCORE = 5000; 
 	private static int MAX_MOVES = 20;
-	private static int REQUIRED_CHERRIES = 5;
-	private static int REQUIRED_HAZELNUTS = 3;
+	private static int REQUIRED_CHERRIES = 1;
+	private static int REQUIRED_HAZELNUTS = 2;
 	private Cell wallCell;
 	private Cell candyGenCell;
 	public Level1(){
@@ -74,7 +76,7 @@ public class Level1 extends Grid {
 		}
 
 		public boolean playerWon() {
-			return getScore() > requiredScore && getCherriesLeftToExplode()==0 && getHazelnutsLeftToExplode()==0;
+			return getScore() >= requiredScore && getCherriesLeftToExplode() == 0 && getHazelnutsLeftToExplode() == 0;
 		}
 	}
 	public String getLevelName(){
