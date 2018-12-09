@@ -132,21 +132,25 @@ public abstract class Grid {
 	public void tryRemove(Cell cell) {
 		if (gMap.containsKey(cell)) {
             Point p = gMap.get(cell);
-			Element content = cell.getContent();
-			if ( content instanceof Cherry && p.x == SIZE - 1){
-                cherriesExploded++;
-                clearContent(p.x,p.y);
-			}
-            if ( content instanceof Hazelnut && p.x == SIZE -1 ){
-                hazelnutsExploded++;
-                clearContent(p.x,p.y);
-            }
+			FruitRemoveCheck(p.x,p.y);
 
 
             Figure f = figureDetector.checkFigure(p.x, p.y);
 			if (f != null) {
 				removeFigure(p.x, p.y, f);
 			}
+		}
+	}
+
+	public void FruitRemoveCheck(int x, int y){
+		Element content = getCell(x,y).getContent();
+		if ( content instanceof Cherry && x == SIZE - 1){
+			cherriesExploded++;
+			clearContent(x,y);
+		}
+		if ( content instanceof Hazelnut && x == SIZE -1 ){
+			hazelnutsExploded++;
+			clearContent(x,y);
 		}
 	}
 
