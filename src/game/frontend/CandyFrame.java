@@ -92,6 +92,8 @@ public class CandyFrame extends VBox {
 						} else {
 							message = message + " Finished - Loser !";
 						}
+						NextLevelWindow next = new NextLevelWindow();
+						next.addButtons();
 						// Aca podriamos meter alerta que sea tipo:
 						// ganaste! queres ir al next level o queres salir?
 						// perdiste! reintentar? si o no
