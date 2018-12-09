@@ -23,12 +23,14 @@ public class CandyFrame extends VBox {
 	private Point2D lastPoint;
 	private LevelPanel levelPanel;
 	private CandyGame game;
+	private AppMenu appMenu;
 
 	public CandyFrame(CandyGame game) {
 		this.game = game;
 		game.initGame();
-		getChildren().add(new AppMenu());
-		levelPanel = new LevelPanel(game.getLevelName(), game.getRequiredScore(), game.getMaxMoves(), game.getCherriesLeftToExplode(), game.getCherriesLeftToExplode());
+		appMenu = new AppMenu();
+		getChildren().add(appMenu);
+		levelPanel = new LevelPanel(game.getLevelName(), game.getRequiredScore(), game.getMaxMoves(), game.getCherriesLeftToExplode(), game.getHazelnutsLeftToExplode());
 		getChildren().add(levelPanel);
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
@@ -65,14 +67,14 @@ public class CandyFrame extends VBox {
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 			if (lastPoint == null || lastPoint.getY() < 0) {
-				lastPoint = translateCoords((event.getX()), event.getY()-levelPanel.getHeight());
+				lastPoint = translateCoords((event.getX()), event.getY());
 				System.out.println("Get first = " +  lastPoint);
 			} else {
-				Point2D newPoint = translateCoords(event.getX(), event.getY()-levelPanel.getHeight());
+				Point2D newPoint = translateCoords(event.getX(), event.getY());
 				if (newPoint != null && newPoint.getY() > 0) {
 					System.out.println("Get second = " +  newPoint);
 					if (game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY()))
-						levelPanel.update(game.getCherriesLeftToExplode(), game.getCherriesLeftToExplode());
+						levelPanel.update(game.getCherriesLeftToExplode(), game.getHazelnutsLeftToExplode());
 					String message = ((Long)game().getScore()).toString();
 					if (game().isFinished()) {
 						if (game().playerWon()) {
@@ -95,7 +97,7 @@ public class CandyFrame extends VBox {
 
 	private Point2D translateCoords(double x, double y) {
 		double i = x / CELL_SIZE;
-		double j = y / CELL_SIZE;
+		double j = (y-levelPanel.getHeight() - appMenu.getHeight()) / CELL_SIZE;
 		return (i >= 0 && i < game.getSize() && j >= 0 && j < game.getSize()) ? new Point2D(j, i) : null;
 	}
 

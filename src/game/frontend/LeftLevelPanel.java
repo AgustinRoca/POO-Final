@@ -11,13 +11,13 @@ public class LeftLevelPanel extends BorderPane {
     public LeftLevelPanel(long requiredScore, long maxMoves){
     scoreLabel = new Label(String.format("   Required Score: %d",requiredScore));
     scoreLabel.setAlignment(Pos.TOP_LEFT);
-    scoreLabel.setStyle("-fx-font-size: 20");
+    scoreLabel.setStyle("-fx-font-size: 15");
     setTop(scoreLabel);
 
     this.movesLeft = maxMoves;
     movesLabel = new Label(String.format("   Moves Left: %d",maxMoves));
     movesLabel.setAlignment(Pos.BOTTOM_LEFT);
-    movesLabel.setStyle("-fx-font-size: 20");
+    movesLabel.setStyle("-fx-font-size: 15");
     setBottom(movesLabel);
     }
 

@@ -13,7 +13,7 @@ public class LevelPanel extends BorderPane{
         setStyle("-fx-background-color: #ff5bdd");
         levelLabel = new Label(level);
         levelLabel.setAlignment(Pos.TOP_CENTER);
-        levelLabel.setStyle("-fx-font-size: 35");
+        levelLabel.setStyle("-fx-font-size: 30");
         setCenter(levelLabel);
 
         leftPanel = new LeftLevelPanel(requiredScore, maxMoves);
