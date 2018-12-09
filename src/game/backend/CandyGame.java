@@ -74,6 +74,8 @@ public class CandyGame implements GameListener {
 		return grid.nextLevel();
 	}
 
+	public Class<?> currentLevel(){ return levelClass;}
+
 	@Override
 	public void cellExplosion(Element e) {
 		state.addScore(e.getScore());

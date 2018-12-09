@@ -112,7 +112,7 @@ public class CandyFrame extends VBox {
 							Optional<ButtonType> result = alert.showAndWait();
 							if(result.isPresent()) {
 								if (result.get() == ButtonType.OK) {
-									//insert this level again here
+									LevelRunner.run(game.currentLevel());
 								}
 								else
 									Platform.exit();
