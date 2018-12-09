@@ -1,5 +1,7 @@
 package game.backend;
 
+import com.sun.tools.javah.Gen;
+import game.backend.cell.CandyGeneratorCell;
 import game.backend.cell.Cell;
 import game.backend.cell.GeneralGeneratorCell;
 import game.backend.cell.GeneratorCell;

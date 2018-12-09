@@ -44,13 +44,15 @@ public class FigureDetector {
 
 	/** Borra la figura del grid y si es necesario, reemplaza por el que corresponda */
 	public void removeFigure(int i, int j, Figure f) {
-		CandyColor color = ((Candy)grid.get(i, j)).getColor();
-		grid.clearContent(i, j);
-		if (f.hasReplacement()) {
-			grid.setContent(i, j, f.generateReplacement(color));
-		}
-		for (Checkpoint c: f.getCheckpoints()) {
-			grid.clearContent(i + c.getI(), j + c.getJ());
+		if(grid.get(i,j) instanceof Candy) {
+			CandyColor color = ((Candy) grid.get(i, j)).getColor();
+			grid.clearContent(i, j);
+			if (f.hasReplacement()) {
+				grid.setContent(i, j, f.generateReplacement(color));
+			}
+			for (Checkpoint c : f.getCheckpoints()) {
+				grid.clearContent(i + c.getI(), j + c.getJ());
+			}
 		}
 	}
 
