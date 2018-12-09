@@ -69,18 +69,10 @@ public class Level1 extends Grid {
 	}
 	
 	private class Level1State extends GameState {
-		private long requiredScore;
-		private long maxMoves;
-		
 		public Level1State(long requiredScore, long maxMoves) {
-			this.requiredScore = requiredScore;
-			this.maxMoves = maxMoves;
+			newGameState(requiredScore,maxMoves);
 		}
 
-		public boolean gameOver() {
-			return playerWon() || getMoves() >= maxMoves;
-		}
-		
 		public boolean playerWon() {
 			return getScore() > requiredScore && getCherriesExploded()==REQUIRED_CHERRIES && getHazelnutsExploded()==REQUIRED_HAZELNUTS;
 		}
