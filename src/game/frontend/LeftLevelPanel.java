@@ -5,11 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 public class LeftLevelPanel extends BorderPane {
-    private Label scoreLabel;
     private Label movesLabel;
     private long movesLeft;
     public LeftLevelPanel(long requiredScore, long maxMoves){
-    scoreLabel = new Label(String.format("   Required Score: %d",requiredScore));
+    Label scoreLabel = new Label(String.format("   Required Score: %d", requiredScore));
     scoreLabel.setAlignment(Pos.TOP_LEFT);
     scoreLabel.setStyle("-fx-font-size: 15");
     setTop(scoreLabel);
