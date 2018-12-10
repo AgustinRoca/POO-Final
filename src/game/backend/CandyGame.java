@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class CandyGame implements GameListener {
 	
-	private Class<?> levelClass;
+	private final Class<?> levelClass;
 	private Grid grid;
 	private GameState state;
 	

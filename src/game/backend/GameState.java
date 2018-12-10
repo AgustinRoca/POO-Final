@@ -3,7 +3,6 @@ package game.backend;
 public abstract class GameState {
 	protected long requiredScore;
 	private long maxMoves;
-	private Grid grid;
 	private long score = 0;
 	private int moves = 0;
 	
