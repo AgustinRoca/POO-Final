@@ -29,7 +29,6 @@ public enum Checkpoint {
 		return j;
 	}
 	
-	// de nuevo no se que representa value je
 	public int getValue() {
 		return value;
 	}

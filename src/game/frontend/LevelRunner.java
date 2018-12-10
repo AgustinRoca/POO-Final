@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class LevelRunner {
+	
     private static Stage stage = new Stage();
 
     public static void run(Class<?> levelClass) {
@@ -25,6 +26,7 @@ public class LevelRunner {
             stage.show();
         });
     }
+    
     private static void wonTheGame(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("The God himself");
@@ -37,4 +39,5 @@ public class LevelRunner {
             }
         }
     }
+    
 }

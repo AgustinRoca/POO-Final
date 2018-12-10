@@ -34,6 +34,7 @@ public abstract class Grid {
 
 	/** Rellena todas las celdas del juego*/
 	protected void fillCells(){
+		
 		Cell wallCell;
 		Cell candyGenCell;
 		wallCell = new Cell(this);

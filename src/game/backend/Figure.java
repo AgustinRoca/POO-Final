@@ -48,7 +48,7 @@ public enum Figure {
 	
 	// La forma en la que explotan los caramelos
 	private Checkpoint[] checkpoints;
-	// No se que es
+	// valor
 	private int value;
 	// Si se transforma en otro caramelo
 	private Class<?> replacementClass;

@@ -1,6 +1,7 @@
 package game.backend;
 
 public abstract class GameState {
+	
 	protected long requiredScore;
 	private long maxMoves;
 	private long score = 0;
