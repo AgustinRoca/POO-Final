@@ -10,6 +10,6 @@ public class GameApp extends Application {
 	}
 
 	public void start(Stage primaryStage) {
-	LevelRunner.run(Level1.class);
+		LevelRunner.run(Level1.class);
 	}
 }
