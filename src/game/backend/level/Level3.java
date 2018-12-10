@@ -48,7 +48,7 @@ public class Level3 extends Grid {
         }
     }
     public String getLevelName(){
-        return "Level 2";
+        return "Level 3";
     }
     public long getMaxMoves(){
         return MAX_MOVES;
