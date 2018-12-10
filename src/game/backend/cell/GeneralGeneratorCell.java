@@ -11,7 +11,7 @@ public class GeneralGeneratorCell extends GeneratorCell {
 
 	@Override
 	public Element getContent() {
-		if (Math.random() > 0.90) {
+		if (Math.random() > 0.85) {
 			return new FruitGeneratorCell(getGrid()).getContent();
 		} else {
 			return new CandyGeneratorCell(getGrid()).getContent();

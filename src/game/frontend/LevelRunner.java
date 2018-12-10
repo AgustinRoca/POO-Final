@@ -27,7 +27,7 @@ public class LevelRunner {
     }
     private static void wonTheGame(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("The God himself");
+        alert.setTitle("Candy Crush");
         alert.setHeaderText("You have won the game");
         alert.setContentText("More levels coming soon");
         Optional<ButtonType> result = alert.showAndWait();

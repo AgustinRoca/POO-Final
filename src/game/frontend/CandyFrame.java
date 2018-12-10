@@ -92,9 +92,9 @@ public class CandyFrame extends VBox {
 						if (game().playerWon()) {
 							message = message + " Finished - Player Won!";
 							Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-							alert.setTitle("Nivel ganado");
-							alert.setHeaderText("You Won!");
-							alert.setContentText("¿Quiere ir al siguiente nivel?");
+							alert.setTitle("Candy Crush");
+							alert.setHeaderText("You have won this level");
+							alert.setContentText("Do you wanna try the next level?");
 							Optional<ButtonType> result = alert.showAndWait();
 							if(result.isPresent()) {
 								if (result.get() == ButtonType.OK) {
@@ -106,9 +106,9 @@ public class CandyFrame extends VBox {
 						} else {
 							message = message + " Finished - Loser !";
 							Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-							alert.setTitle("Nivel Perdido");
-							alert.setHeaderText("You Lost!");
-							alert.setContentText("¿Quiere reintentar el nivel?");
+							alert.setTitle("Candy Crush");
+							alert.setHeaderText("You have lost");
+							alert.setContentText("Do you wanna try again?");
 							Optional<ButtonType> result = alert.showAndWait();
 							if(result.isPresent()) {
 								if (result.get() == ButtonType.OK) {
