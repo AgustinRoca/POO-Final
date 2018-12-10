@@ -10,7 +10,6 @@ public class GameApp extends Application {
 	}
 
 	public void start(Stage primaryStage) {
-	//new LevelMenu(primaryStage).setVisible(true);
 	LevelRunner.run(Level1.class);
 	}
 }
