@@ -4,9 +4,7 @@ import game.backend.Grid;
 
 public class StationaryMove extends Move {
 
-	public StationaryMove(Grid grid) {
-        super(grid);
-    }
+	public StationaryMove(Grid grid) { super(grid); }
 	
     public void removeElements(){}
 
