@@ -44,7 +44,7 @@ public class Level3 extends Grid {
         }
 
         public boolean playerWon() {
-            return getScore() >= requiredScore && getJailsLeft() == 0;
+            return getScore() >= requiredScore && getJailsLeft() == 0 && getCherriesLeftToExplode() == 0 && getHazelnutsLeftToExplode() == 0;
         }
     }
     public String getLevelName(){

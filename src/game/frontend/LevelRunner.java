@@ -30,11 +30,7 @@ public class LevelRunner {
         alert.setTitle("Candy Crush");
         alert.setHeaderText("You have won the game");
         alert.setContentText("More levels coming soon");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent()) {
-            if (result.get() == ButtonType.CLOSE) {
-                Platform.exit();
-            }
-        }
+        alert.showAndWait();
+        Platform.exit();
     }
 }
