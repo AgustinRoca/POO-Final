@@ -84,10 +84,7 @@ public enum Figure {
 	public Checkpoint[] getCheckpoints() {
 		return checkpoints;
 	}
-	
-	public int size() {
-		return checkpoints.length;
-	}
+
 
 	public boolean hasReplacement() {
 		return replacementClass != null;

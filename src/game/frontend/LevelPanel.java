@@ -5,13 +5,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 public class LevelPanel extends BorderPane{
-    private Label levelLabel;
     private LeftLevelPanel leftPanel;
     private RightLevelPanel rightPanel;
 
     public LevelPanel(String level,long requiredScore, long maxMoves,int cherriesLeftToExplode, int hazelnutsLeftToExplode ) {
         setStyle("-fx-background-color: #ff5bdd");
-        levelLabel = new Label(level);
+
+        Label levelLabel = new Label(level);
         levelLabel.setAlignment(Pos.TOP_CENTER);
         levelLabel.setStyle("-fx-font-size: 30");
         setCenter(levelLabel);
