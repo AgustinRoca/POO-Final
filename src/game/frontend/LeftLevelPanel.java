@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 public class LeftLevelPanel extends BorderPane {
-    private Label movesLabel;
+    private final Label movesLabel;
     private long movesLeft;
     public LeftLevelPanel(long requiredScore, long maxMoves){
     Label scoreLabel = new Label(String.format("   Required Score: %d", requiredScore));

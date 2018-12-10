@@ -22,13 +22,13 @@ public class CandyFrame extends VBox {
 
 	private static final int CELL_SIZE = 65;
 
-	private BoardPanel boardPanel;
-	private ScorePanel scorePanel;
-	private ImageManager images;
+	private final BoardPanel boardPanel;
+	private final ScorePanel scorePanel;
+	private final ImageManager images;
 	private Point2D lastPoint;
-	private LevelPanel levelPanel;
-	private CandyGame game;
-	private AppMenu appMenu;
+	private final LevelPanel levelPanel;
+	private final CandyGame game;
+	private final AppMenu appMenu;
 
 	public CandyFrame(CandyGame game) {
 		this.game = game;

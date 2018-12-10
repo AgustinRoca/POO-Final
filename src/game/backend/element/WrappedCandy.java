@@ -4,7 +4,7 @@ import game.backend.move.Direction;
 
 public class WrappedCandy extends Candy {
 	
-	private Direction[] explosion = new Direction[4];
+	private final Direction[] explosion = new Direction[4];
 
 	//El paquete no explota las diagonales tambien? Chequear
 	public WrappedCandy() {

@@ -7,7 +7,7 @@ import game.backend.element.Element;
 
 public class FigureDetector {
 
-	private Grid grid;
+	private final Grid grid;
 
 	public FigureDetector(Grid grid) {
 		this.grid = grid;

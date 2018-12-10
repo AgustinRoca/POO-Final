@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class LevelRunner {
-    private static Stage stage = new Stage();
+    private static final Stage stage = new Stage();
 
     public static void run(Class<?> levelClass) {
         if (levelClass == null) {

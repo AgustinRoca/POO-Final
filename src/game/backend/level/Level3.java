@@ -4,10 +4,10 @@ package game.backend.level;
 import game.backend.GameState;
 import game.backend.Grid;
 public class Level3 extends Grid {
-    private static int REQUIRED_SCORE = 9000;
-    private static int MAX_MOVES = 35;
-    private static int REQUIRED_CHERRIES = 1;
-    private static int REQUIRED_HAZELNUTS = 2;
+    private static final int REQUIRED_SCORE = 9000;
+    private static final int MAX_MOVES = 35;
+    private static final int REQUIRED_CHERRIES = 1;
+    private static final int REQUIRED_HAZELNUTS = 2;
 
 
     public Level3(){

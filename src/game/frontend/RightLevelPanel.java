@@ -5,8 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 public class RightLevelPanel extends BorderPane{
-    private Label cherriesLabel;
-    private Label hazelnutsLabel;
+    private final Label cherriesLabel;
+    private final Label hazelnutsLabel;
     public RightLevelPanel(int cherriesRequired, int hazelntusRequired){
         cherriesLabel = new Label(String.format("Cherries left to Explode: %d   ", cherriesRequired));
         cherriesLabel.setAlignment(Pos.TOP_CENTER);

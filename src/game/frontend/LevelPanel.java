@@ -5,8 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
 public class LevelPanel extends BorderPane{
-    private LeftLevelPanel leftPanel;
-    private RightLevelPanel rightPanel;
+    private final LeftLevelPanel leftPanel;
+    private final RightLevelPanel rightPanel;
 
     public LevelPanel(String level,long requiredScore, long maxMoves,int cherriesLeftToExplode, int hazelnutsLeftToExplode ) {
         setStyle("-fx-background-color: #ff5bdd");

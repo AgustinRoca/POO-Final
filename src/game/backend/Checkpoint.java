@@ -11,9 +11,9 @@ public enum Checkpoint {
 	L(0,-1, 64), // izq
 	LL(0,-2, 128); // izq x2
 	
-	private int i;
-	private int j;
-	private int value;
+	private final int i;
+	private final int j;
+	private final int value;
 	
 	Checkpoint(int i, int j, int value) {
 		this.i = i;

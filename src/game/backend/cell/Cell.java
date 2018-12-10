@@ -8,8 +8,8 @@ import game.backend.move.Direction;
 
 public class Cell {
 	
-	private Grid grid;
-	private Cell[] around = new Cell[Direction.values().length];
+	private final Grid grid;
+	private final Cell[] around = new Cell[Direction.values().length];
 	private Element content;
 	private boolean isJailed = false;
 	
@@ -40,7 +40,7 @@ public class Cell {
 	}
 
 	/** Devuelve true si se puede mover */
-	public boolean isMovable(){
+	protected boolean isMovable(){
 		return content.isMovable() && !isJailed;
 	}
 
@@ -86,7 +86,7 @@ public class Cell {
 	}
 
 	/** Borra el contenido y devuelve lo que habia */
-	public Element getAndClearContent() {
+	protected Element getAndClearContent() {
 		if (content.isMovable()) {
 			Element ret = content;
 			this.content = new Nothing();
@@ -116,7 +116,7 @@ public class Cell {
 		this.content = content;
 	}
 
-	public Grid getGrid(){
+	protected Grid getGrid(){
 		return grid;
 	}
 

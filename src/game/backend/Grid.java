@@ -18,10 +18,10 @@ public abstract class Grid {
 
 	public static final int SIZE = 9;
 
-	private Cell[][] g = new Cell[SIZE][SIZE];
-	private Map<Cell, Point> gMap = new HashMap<>();
+	private final Cell[][] g = new Cell[SIZE][SIZE];
+	private final Map<Cell, Point> gMap = new HashMap<>();
 	private GameState state;
-	private List<GameListener> listeners = new ArrayList<>();
+	private final List<GameListener> listeners = new ArrayList<>();
 	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
 	private int hazelnutsLeftToPut;
@@ -33,7 +33,7 @@ public abstract class Grid {
     protected abstract GameState newState();
 
 	/** Rellena todas las celdas del juego*/
-	protected void fillCells(){
+	private void fillCells(){
 		Cell wallCell;
 		Cell candyGenCell;
 		wallCell = new Cell(this);
@@ -88,7 +88,7 @@ public abstract class Grid {
 		jailsLeft--;
 	}
 
-	public int getJailsLeft() {
+	protected int getJailsLeft() {
 		return jailsLeft;
 	}
 
