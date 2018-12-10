@@ -11,7 +11,7 @@ public class Level3 extends Grid {
 
 
     public Level3(){
-        newGrid(REQUIRED_CHERRIES,REQUIRED_HAZELNUTS);
+        super(REQUIRED_CHERRIES,REQUIRED_HAZELNUTS);
     }
     @Override
     protected GameState newState() {

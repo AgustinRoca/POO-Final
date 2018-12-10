@@ -11,7 +11,7 @@ public class Level1 extends Grid {
 	private static final int REQUIRED_HAZELNUTS = 0;
 
 	public Level1(){
-		newGrid(REQUIRED_CHERRIES,REQUIRED_HAZELNUTS);
+		super(REQUIRED_CHERRIES,REQUIRED_HAZELNUTS);
 	}
 	@Override
 	protected GameState newState() {

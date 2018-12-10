@@ -69,15 +69,16 @@ public abstract class Grid {
 			}
 		}
 	}
-	
-	protected Cell[][] g() {
-		return g;
-	}
-	protected void newGrid(int requiredCherries, int requiredHazelnuts){
+
+	public Grid(int requiredCherries, int requiredHazelnuts){
 		this.cherriesLeftToPut = requiredCherries;
 		this.cherriesLeftToExplode = requiredCherries;
 		this.hazelnutsLeftToPut = requiredHazelnuts;
 		this.hazelnutsLeftToExplode = requiredHazelnuts;
+	}
+
+	protected Cell[][] g() {
+		return g;
 	}
 
 	protected void incrementJailsLeft(){
